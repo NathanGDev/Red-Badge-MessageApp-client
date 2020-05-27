@@ -11,7 +11,7 @@ const ContactCreate = (props: any) => {
 
     let handleSubmit = (event: any) => {
         event.preventDefault();
-        fetch(`http://localhost:3000/contact/`, {
+        fetch(`http://localhost:3001/contact/`, {
             method: "POST",
             body: JSON.stringify({
                 contact: {
@@ -68,7 +68,6 @@ const ContactCreate = (props: any) => {
                     onChange={(e:any) => setMobileNum(e.target.value)}
                     name="mobileNum"
                     value={mobileNum}
-                    required={true}
                 />
             </FormGroup>
             <FormGroup>
@@ -78,7 +77,6 @@ const ContactCreate = (props: any) => {
                     onChange={(e:any) => setFbMsgrID(e.target.value)}
                     name="fbMsgrID"
                     value={fbMsgrID}
-                    required={true}
                 />
             </FormGroup>
             {/* <FormGroup>

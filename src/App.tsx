@@ -20,36 +20,43 @@ const userRoles = {
   users: [String(UserRoles.user)],
   all: [String(UserRoles.admin), String(UserRoles.user)],
 };
-const App: React.FunctionComponent = () => {
-  const [sessionToken, setSessionToken] = React.useState<any>("");
 
-  React.useEffect(() => {
-    if (localStorage.getItem("token")) {
-      setSessionToken(localStorage.getItem("token"));
-    }
-  }, []);
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+  }
 
-  const updateToken = (newToken: any) => {
-    localStorage.setItem("token", newToken);
-    setSessionToken(newToken);
-    console.log("updateToken -> newToken", newToken);
-  };
+  render() {
+    const [sessionToken, setSessionToken] = React.useState<any>("");
 
-  return (
-    <Router>
-      <div className="App">
-        <Navigations updateToken={updateToken} />
-      </div>
-      <Switch>
-        <Route exact path="/signup">
-          <Auth updateToken={updateToken} />
-        </Route>
-        <Route exact path="/login">
-          <Login updateToken={updateToken} />
-        </Route>
-      </Switch>
-    </Router>
-  );
-};
+    React.useEffect(() => {
+      if (localStorage.getItem("token")) {
+        setSessionToken(localStorage.getItem("token"));
+      }
+    }, []);
+
+    const updateToken = (newToken: any) => {
+      localStorage.setItem("token", newToken);
+      setSessionToken(newToken);
+      console.log("updateToken -> newToken", newToken);
+    };
+
+    return (
+      <Router>
+        <div className="App">
+          <Navigations updateToken={updateToken} />
+        </div>
+        <Switch>
+          <Route exact path="/signup">
+            <Auth updateToken={updateToken} />
+          </Route>
+          <Route exact path="/login">
+            <Login updateToken={updateToken} />
+          </Route>
+        </Switch>
+      </Router>
+    );
+  }
+}
 
 export default App;

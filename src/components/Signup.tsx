@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Form, FormGroup, Label, Input, Button } from "reactstrap";
+import { Form, FormGroup, Label, Input } from "reactstrap";
+import { MenuItem, Button, Menu } from "@material-ui/core";
 // import APIURL from "../helpers/environment";
 
 const Signup = (props: any) => {
@@ -8,6 +9,8 @@ const Signup = (props: any) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [mobileNum, setMobileNum] = useState("");
+  const [userTypeSalesman, setUserTypeSalesman] = useState<boolean>(false);
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null); //  MenuDropdown Toggle
 
   let handleSubmit = (event: any) => {
     event.preventDefault();
@@ -20,6 +23,7 @@ const Signup = (props: any) => {
           firstName: firstName,
           lastName: lastName,
           mobileNum: mobileNum,
+          userType: userTypeSalesman,
         },
       }),
       headers: new Headers({
@@ -30,6 +34,17 @@ const Signup = (props: any) => {
       .then((data) => {
         props.updateToken(data.sessionToken);
       });
+  };
+
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = (event: any) => {
+    setAnchorEl(null);
+    setUserTypeSalesman(true);
+    let { userTypeSalesman } = event?.currentTarget.dataset;
+    console.log(userTypeSalesman);
   };
 
   return (
@@ -87,10 +102,34 @@ const Signup = (props: any) => {
             required={true}
           />
         </FormGroup>
-
-        <Button className="authButton" type="submit">
-          Signup
-        </Button>
+        <FormGroup>
+          <Button
+            aria-controls="simple-menu"
+            aria-haspopup="true"
+            onClick={handleClick}
+          >
+            Open Menu
+          </Button>
+          <Menu
+            id="simple-menu"
+            anchorEl={anchorEl}
+            keepMounted
+            open={Boolean(anchorEl)}
+            onClose={handleClose}
+          >
+            <MenuItem data-my-value={userTypeSalesman} onClick={handleClose}>
+              <div>Salesman</div>
+            </MenuItem>
+            <MenuItem onClick={handleClose} disabled>
+              Assistant
+            </MenuItem>
+            <MenuItem onClick={handleClose} disabled>
+              System Admin
+            </MenuItem>
+          </Menu>
+        </FormGroup>
+        <br />
+        <Button onClick={handleSubmit}>Signup</Button>
       </Form>
     </div>
   );

@@ -53,10 +53,10 @@ class App extends React.Component<TokenState, TokenState> {
     localStorage.clear();
     this.setState(null);
   };
-  sessionToken!: string;
+  sessionToken!: any;
   protectedViews = () => {
     return this.sessionToken === localStorage.getItem("token") ? (
-      <Home token={this.sessionToken} clearToken={this.clearToken} />
+      <Home token={this.updateToken}/>
     ) : (
       <Login updateToken={this.updateToken} />
     );
@@ -77,11 +77,11 @@ class App extends React.Component<TokenState, TokenState> {
           <Route path="/signup">
             <Signup updateToken={this.updateToken} />
           </Route>
-          {/* <Route exact path="/home">
-            <Home />
-          </Route> */}
-        </Switch>
+          {/*<Route exact path="/home">*/}
+          {/*  <Home />*/}
+          {/*</Route>*/}
         {this.protectedViews()}
+        </Switch>
       </Router>
     );
   }

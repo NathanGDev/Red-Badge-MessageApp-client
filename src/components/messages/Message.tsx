@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import classNames from "classnames";
+import PropTypes from "prop-types";
 import "./Message.css";
 
 type MessageVar = {
@@ -9,7 +9,8 @@ type MessageVar = {
   me: boolean;
 };
 
-class Message extends Component<MessageVar> {
+
+class Message extends Component<any, any> {
   static propTypes = {
     author: PropTypes.string,
     body: PropTypes.string.isRequired,

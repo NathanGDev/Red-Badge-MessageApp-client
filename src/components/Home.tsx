@@ -9,10 +9,16 @@ import Message from "./messages/Message";
 // };
 
 interface MessageSender {
-  messages: [];
+ clearToken: any;
 }
-type messages = {};
-class Home extends React.Component<MessageSender, MessageSender> {
+//
+// type Messages = {
+//   me: boolean;
+//   author: string;
+//   body: string;
+// };
+
+class Home extends React.Component<any, {messages: any}> {
   constructor(props: any) {
     super(props);
     this.state = {

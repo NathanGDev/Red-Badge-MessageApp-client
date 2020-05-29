@@ -27,12 +27,7 @@ const Auth = (props: any) => {
     );
   }
 
-  return (
-    <div>
-      <h1>Sign up for me then</h1>
-      {toggler()}
-    </div>
-  );
+  return <div>{toggler()}</div>;
 };
 
 export default Auth;

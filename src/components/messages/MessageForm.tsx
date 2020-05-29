@@ -14,7 +14,7 @@ class MessageForm extends Component<MessageFormInput> {
   };
 
   componentDidMount = () => {
-    (this.input.focus() as HTMLInputElement).select();
+    this.input.focus()
   };
 
   handleFormSubmit = (event: any) => {

@@ -3,7 +3,6 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Redirect,
 } from "react-router-dom";
 import "./App.css";
 import Login from "./components/Login";
@@ -11,6 +10,8 @@ import Signup from "./components/Signup";
 import Home from "./components/Home";
 import Auth from "./components/Auth";
 import Navigations from "./components/Navigations";
+
+
 enum UserRoles {
   admin = "admin",
   user = "user",
@@ -29,6 +30,9 @@ const userRoles = {
 type TokenState = {
   sessionToken?: any;
 };
+
+
+
 class App extends React.Component<TokenState, TokenState> {
   constructor(props: any) {
     super(props);
@@ -37,18 +41,20 @@ class App extends React.Component<TokenState, TokenState> {
     };
   }
 
-  componentDidMount() {
-    if (localStorage.getItem("token")) {
-      this.setState(() => {
-        localStorage.getItem("token");
-      });
-    }
-  }
+  // componentDidMount() {
+  //   if (localStorage.getItem("token")) {
+  //     this.setState(() => {
+  //       localStorage.getItem("token");
+  //     });
+  //   }
+  // }
+
   updateToken = (newToken: any) => {
     localStorage.setItem("token", newToken);
     this.setState({ sessionToken: newToken });
     console.log("updateToken -> newToken", newToken);
   };
+
   clearToken = () => {
     localStorage.clear();
     this.setState(null);
@@ -77,9 +83,9 @@ class App extends React.Component<TokenState, TokenState> {
           <Route path="/signup">
             <Signup updateToken={this.updateToken} />
           </Route>
-          {/*<Route exact path="/home">*/}
-          {/*  <Home />*/}
-          {/*</Route>*/}
+          <Route exact path="/home">
+            <Home />
+          </Route>
         {this.protectedViews()}
         </Switch>
       </Router>

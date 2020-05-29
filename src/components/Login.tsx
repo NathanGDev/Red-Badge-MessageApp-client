@@ -72,7 +72,6 @@ const Login = (props: any) => {
           Login
         </button>
       </form>
-      <div onClick={needAccount}>need an account?</div>
       <a href="/signup">Need to create an account?</a>
     </div>
   );

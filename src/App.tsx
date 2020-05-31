@@ -31,8 +31,6 @@ type TokenState = {
   sessionToken?: any;
 };
 
-
-
 class App extends React.Component<TokenState, TokenState> {
   constructor(props: any) {
     super(props);

@@ -1,3 +1,4 @@
+import withRoot from '../styling/withRoot';
 import React, { useState, useEffect, useReducer } from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import ContactCreate from './ContactCreate';
@@ -8,7 +9,10 @@ import ContactCards from './ContactCards';
 const ContactIndex = (props: any) => {
     const [contacts, setContacts] = useState([]);
     const [updateActive, setUpdateActive] = useState(false);
-    const [contactToUpdate, setContactToUpdate] = useState([]);
+    const [contactToUpdate, setContactToUpdate] = useState({});
+
+    console.log(props.token)
+
 
     const fetchContacts = () => {
         fetch(`http://localhost:3001/contact/`, {
@@ -19,7 +23,7 @@ const ContactIndex = (props: any) => {
             })
         }).then((res) => res.json())
             .then((contactData) => {
-                setContacts(contactData.id)
+                setContacts(contactData)
             })
     }
 
@@ -28,7 +32,6 @@ const ContactIndex = (props: any) => {
     }, [])
 
     const editUpdateContact = (contact: any) => {
-        console.log(contact);
         setContactToUpdate(contact);
     }
 
@@ -51,4 +54,4 @@ const ContactIndex = (props: any) => {
     );
 };
 
-export default ContactIndex;
+export default withRoot(ContactIndex);

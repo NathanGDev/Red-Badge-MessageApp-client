@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button, Form, FormGroup, Label, Input, Modal, ModalHeader, ModalBody } from 'reactstrap';
 // import APIURL from '../../helpers/environment';
 
-const ContactEdit = (props: any) => {
+const UserEdit = (props: any) => {
   const [editFirstName, setEditFirstName] = useState("");
   const [editLastName, setEditLastName] = useState("");
   const [editMobileNum, setEditMobileNum] = useState("");
@@ -10,15 +10,15 @@ const ContactEdit = (props: any) => {
   const [editSalesUserID, setEditSalesUserID] = useState("");
   const [editId, setEditId] = useState(props.contactToUpdate.id);
 
-  // const handleClose = (event: any, reason: any) => {
-  //   if (reason === 'clickaway') {
-  //     return;
-  //   }
-  // };
+  const handleClose = (event: any, reason: any) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+  };
 
-  const contactUpdate = (event: any, contact: any) => {
+  const userUpdate = (event: any, contact: any) => {
     event.preventDefault();
-    fetch(`http://localhost:3001/contact/${editId}`, {
+    fetch(`http://localhost:3001/user/${editId}`, {
       method: 'PUT',
       body: JSON.stringify({
         contact: {
@@ -32,14 +32,14 @@ const ContactEdit = (props: any) => {
         'Authorization': props.token
       })
     }).then((res) => {
-      props.fetchContacts();
+      props.fetchUsers();
       props.updateOff();
     })
 
   }
   return (
     <Modal isOpen={true}>
-      <ModalHeader>Edit Contact</ModalHeader>
+      <ModalHeader>Edit User</ModalHeader>
       <ModalBody>
         {/* <Form onSubmit={contactUpdate}> */}
           <Form>
@@ -53,7 +53,7 @@ const ContactEdit = (props: any) => {
           </FormGroup><FormGroup>
             <Input name="fb msgr id" value={editFbMsgrID} onChange={(e: any) => setEditFbMsgrID(e.target.value)} />
           </FormGroup>
-          <Button type="submit" color="secondary" fullWidth>Update contact</Button>
+          <Button type="submit" color="secondary" fullWidth>Update your loot!</Button>
           {/* <Button type="submit" align="center" onClick={handleClose}>Cancel</Button> */}
         </Form>
       </ModalBody>
@@ -61,4 +61,4 @@ const ContactEdit = (props: any) => {
   );
 };
 
-export default ContactEdit;
+export default UserEdit;

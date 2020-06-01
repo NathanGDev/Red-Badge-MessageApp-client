@@ -6,7 +6,6 @@ import Typography from '././styling/Typography';
 import AppForm from '././styling/AppForm';
 import FormButton from '././styling/FormButton';
 import TextField from '@material-ui/core/TextField';
-import Signup from "./Signup";
 // import APIURL from "../helpers/environment";
 
 const useStyles = makeStyles((theme) => ({
@@ -31,18 +30,24 @@ const useStyles = makeStyles((theme) => ({
 },
 }))
 
-const Login = (props: any) => {
+const Signup = (props: any) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [mobileNum, setMobileNum] = useState("");
 
   let handleSubmit = (event: any) => {
-    event?.preventDefault();
-    fetch(`http://localhost:3001/signin`, {
+    event.preventDefault();
+    fetch(`http://localhost:3001/signin/create`, {
       method: "POST",
       body: JSON.stringify({
         user: {
           email: email,
           password: password,
+          firstName: firstName,
+          lastName: lastName,
+          mobileNum: mobileNum,
         },
       }),
       headers: new Headers({
@@ -50,25 +55,9 @@ const Login = (props: any) => {
       }),
     })
       .then((response) => response.json())
-      .then((data: any) => {
+      .then((data) => {
         props.updateToken(data.sessionToken);
-        console.log(data);
       });
-  };
-
-  // Unused function for the time being
-
-  // function IsRememberMe() {
-  //   if (rmCheck.checked && userInput.value !== "") {
-  //     localStorage.username = userInput.value;
-  //     localStorage.checkbox = rmCheck.value;
-  //   } else {
-  //     localStorage.username = "";
-  //     localStorage.checkbox = "";
-  //   }
-  // }
-  let needAccount = () => {
-    return <Signup />;
   };
 
   return (
@@ -76,12 +65,47 @@ const Login = (props: any) => {
       <AppForm>
 
         <React.Fragment>
-          <Typography variant="h3">Log In</Typography>
+          <Typography variant="h3">Sign Up</Typography>
         </React.Fragment>
 
           <form onSubmit={handleSubmit}>
-
-          <TextField
+            <TextField
+              label="First Name"
+              defaultValue="firstName"
+              onChange={(e: any) => setFirstName(e.target.value)}
+              value={firstName}
+              fullWidth
+              required={true}
+              name="firstname"
+              margin="normal"
+              variant="outlined"
+              rowsMax={2}
+            ></TextField>
+            <TextField
+              label="Last Name"
+              defaultValue="lastName"
+              onChange={(e: any) => setLastName(e.target.value)}
+              value={lastName}
+              fullWidth
+              required={true}
+              name="lastname"
+              margin="normal"
+              variant="outlined"
+              rowsMax={2}
+            ></TextField>
+            <TextField
+              label="Mobile Number"
+              defaultValue="mobileNum"
+              onChange={(e: any) => setMobileNum(e.target.value)}
+              value={mobileNum}
+              fullWidth
+              required={true}
+              name="mobileNum"
+              margin="normal"
+              variant="outlined"
+              rowsMax={2}
+            ></TextField>
+            <TextField
               label="Email"
               defaultValue="email"
               onChange={(e: any) => setEmail(e.target.value)}
@@ -93,8 +117,7 @@ const Login = (props: any) => {
               variant="outlined"
               rowsMax={2}
             ></TextField>
-
-        <TextField
+            <TextField
               label="Password"
               defaultValue="password"
               type="password"
@@ -107,19 +130,12 @@ const Login = (props: any) => {
               variant="outlined"
               rowsMax={2}
             ></TextField>
-        {/* <div>
-          <label>Remember Me </label>
-          <input type="checkbox" value="IsRememberMe" id="rememberMe" />
-        </div> */}
-        <FormButton type="submit" color="secondary" value="login" fullWidth onClick={handleSubmit}>
-          Login
-        </FormButton>
-      {/* <div onClick={needAccount}>need an account?</div> */}
-      <div><a href="/signup">Need to create an account?</a></div>
-      </form>
-     </AppForm>
-     </React.Fragment>
+
+<FormButton type="submit" color="secondary" fullWidth>Sign Up</FormButton>
+                </form>
+      </AppForm>
+    </React.Fragment>
   );
 };
 
-export default withRoot(Login);
+export default withRoot(Signup);

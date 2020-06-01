@@ -21,7 +21,10 @@ const Auth = (props: any) => {
 
   return (
     <div>
+<<<<<<< HEAD
       <h1>Sign up for me then</h1>
+=======
+>>>>>>> 83f0c73ebe846df710d70ee4e6cbaa1260d218e4
       {toggler()}
     </div>
   );

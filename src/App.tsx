@@ -10,6 +10,12 @@ import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Auth from "./components/Auth";
 import Navigations from "./components/Navigations";
+<<<<<<< HEAD
+=======
+import ContactIndex from "././components/contact/ContactIndex";
+import UserIndex from "././components/user/UserIndex";
+// import ContactCreate from "././components/contact/ContactCreate";
+>>>>>>> 83f0c73ebe846df710d70ee4e6cbaa1260d218e4
 
 enum UserRoles {
   admin = "admin",
@@ -34,6 +40,14 @@ const App: React.FunctionComponent = () => {
     setSessionToken(newToken);
     console.log("updateToken -> newToken", newToken);
   };
+<<<<<<< HEAD
+=======
+
+  // const protectedViews = () => {
+  //   return (sessionToken === localStorage.getItem('token') ? <ContactIndex token={sessionToken}/>
+  //     : <Auth updateToken={updateToken} />)
+  // }
+>>>>>>> 83f0c73ebe846df710d70ee4e6cbaa1260d218e4
 
   return (
     <Router>
@@ -47,9 +61,20 @@ const App: React.FunctionComponent = () => {
         <Route exact path="/login">
           <Login updateToken={updateToken} />
         </Route>
+<<<<<<< HEAD
+=======
+        <Route exact path="/contact">
+          <ContactIndex token={sessionToken} />
+        </Route>
+        <Route exact path="/user">
+          <UserIndex token={sessionToken} />
+        </Route>
+        {/* {protectedViews()} */}
+>>>>>>> 83f0c73ebe846df710d70ee4e6cbaa1260d218e4
       </Switch>
     </Router>
   );
 };
 
 export default App;
+

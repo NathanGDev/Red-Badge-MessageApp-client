@@ -10,11 +10,11 @@ const ContactEdit = (props: any) => {
   const [editSalesUserID, setEditSalesUserID] = useState("");
   const [editId, setEditId] = useState(props.contactToUpdate.id);
 
-  const handleClose = (event: any, reason: any) => {
-    if (reason === 'clickaway') {
-      return;
-    }
-  };
+  // const handleClose = (event: any, reason: any) => {
+  //   if (reason === 'clickaway') {
+  //     return;
+  //   }
+  // };
 
   const contactUpdate = (event: any, contact: any) => {
     event.preventDefault();
@@ -41,20 +41,20 @@ const ContactEdit = (props: any) => {
     <Modal isOpen={true}>
       <ModalHeader>Edit Contact</ModalHeader>
       <ModalBody>
-        <Form onSubmit={contactUpdate}>
-          {/* <Form> */}
+        {/* <Form onSubmit={contactUpdate}> */}
+          <Form>
           <FormGroup>
-            <Input name="first name" value={editFirstName} onChange={(e) => setEditFirstName(e.target.value)} />
+            <Input name="first name" value={editFirstName} onChange={(e: any) => setEditFirstName(e.target.value)} />
           </FormGroup>
           <FormGroup>
-            <Input name="last name" value={editLastName} onChange={(e) => setEditLastName(e.target.value)} />
+            <Input name="last name" value={editLastName} onChange={(e: any) => setEditLastName(e.target.value)} />
           </FormGroup><FormGroup>
-            <Input name="mobile number" value={editMobileNum} onChange={(e) => setEditMobileNum(e.target.value)} />
+            <Input name="mobile number" value={editMobileNum} onChange={(e: any) => setEditMobileNum(e.target.value)} />
           </FormGroup><FormGroup>
-            <Input name="fb msgr id" value={editFbMsgrID} onChange={(e) => setEditFbMsgrID(e.target.value)} />
+            <Input name="fb msgr id" value={editFbMsgrID} onChange={(e: any) => setEditFbMsgrID(e.target.value)} />
           </FormGroup>
-          <Button type="submit" color="secondary" fullWidth>Update your loot!</Button>
-          <Button type="submit" align="center" onClick={handleClose}>Cancel</Button>
+          <Button type="submit" color="secondary" fullWidth>Update contact</Button>
+          {/* <Button type="submit" align="center" onClick={handleClose}>Cancel</Button> */}
         </Form>
       </ModalBody>
     </Modal>

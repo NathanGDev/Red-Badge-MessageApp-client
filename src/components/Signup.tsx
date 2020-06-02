@@ -131,11 +131,7 @@ const Signup = (props: any) => {
               rowsMax={2}
             ></TextField>
 
-<<<<<<< HEAD
 <FormButton type="submit" color="secondary">Sign Up</FormButton>
-=======
-<FormButton type="submit" color="secondary" fullWidth>Sign Up</FormButton>
->>>>>>> c8a4a63265a23410ba70fdb829cd2c84f79bbf00
                 </form>
       </AppForm>
     </React.Fragment>

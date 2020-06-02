@@ -83,6 +83,7 @@ function NavBar(props: any) {
             Profile
             </Link>
         </MenuItem>
+        {/* {this.state.contacts ?  */}
         <MenuItem onClick={handleClose}>
             <Link
             color="inherit"
@@ -92,8 +93,9 @@ function NavBar(props: any) {
             >
             Contacts
             </Link>
+        {/* : null } */}
         </MenuItem>
-        <MenuItem onClick={handleClose}>
+        {/* <MenuItem onClick={handleClose}>
             <Link
             color="inherit"
             underline="none"
@@ -102,7 +104,7 @@ function NavBar(props: any) {
             >
             Messages
             </Link>
-        </MenuItem>
+        </MenuItem> */}
         <MenuItem onClick={handleClose}>
             <Link
             color="inherit"

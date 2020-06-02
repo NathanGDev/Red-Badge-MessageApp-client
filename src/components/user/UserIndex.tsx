@@ -47,7 +47,10 @@ const UserIndex = (props: any) => {
 
     return (
         <Container>
+<<<<<<< HEAD
             <NavBar />
+=======
+>>>>>>> c8a4a63265a23410ba70fdb829cd2c84f79bbf00
             <UserCreate fetchUsers={fetchUsers} token={props.token}/>
             <UserTable users={users} editUpdateUser={editUpdateUser}
                 updateOn={updateOn} fetchUsers={fetchUsers} token={props.token} />

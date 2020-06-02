@@ -11,8 +11,11 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import DeleteIcon from '@material-ui/icons/Delete';
 import UpdateIcon from '@material-ui/icons/Update';
+<<<<<<< HEAD
 import AppForm from '../styling/AppForm';
 
+=======
+>>>>>>> c8a4a63265a23410ba70fdb829cd2c84f79bbf00
 // import {Table, Button} from 'reactstrap';
 // import APIURL from '../../helpers/environment';
 
@@ -62,7 +65,10 @@ const contactMapper = () => {
 }
 
   return (
+<<<<<<< HEAD
     <AppForm>
+=======
+>>>>>>> c8a4a63265a23410ba70fdb829cd2c84f79bbf00
     <TableRow>
     <h3>Contact</h3>
     <hr/>
@@ -72,6 +78,10 @@ const contactMapper = () => {
                 <th>#</th>
                 <th>First Name</th>
                 <th>Last Name</th>
+<<<<<<< HEAD
+=======
+                <th>Email</th>
+>>>>>>> c8a4a63265a23410ba70fdb829cd2c84f79bbf00
                 <th>Mobile</th>
                 <th>FB Msgr</th>
             </TableRow>
@@ -81,7 +91,10 @@ const contactMapper = () => {
         </tbody>
     </Table>
     </TableRow>
+<<<<<<< HEAD
     </AppForm>
+=======
+>>>>>>> c8a4a63265a23410ba70fdb829cd2c84f79bbf00
   );
 };
 export default ContactTable;

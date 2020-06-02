@@ -7,7 +7,10 @@ import ContactTable from './ContactTable';
 import NavBar from '../NavBar';
 // import APIURL from '../../helpers/environment';
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> c8a4a63265a23410ba70fdb829cd2c84f79bbf00
 const ContactIndex = (props: any) => {
     const [contacts, setContacts] = useState([]);
     const [updateActive, setUpdateActive] = useState(false);

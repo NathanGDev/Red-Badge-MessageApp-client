@@ -32,17 +32,17 @@ class Home extends React.Component<any, {messages: any}> {
     // Send an SMS using Twilio
     // const accountSid = process.env.TWILIO_ACCOUNT_SID;
     // const authToken = process.env.TWILIO_AUTH_TOKEN;
+    
+    const accountSid = "ACc3b07c329cd2ac8ac317f9b4acc48794";
+    const authToken = "b92a4a4576b28dcea35a287f4bd0a176";
+    const client = require("twilio")(accountSid, authToken);
 
-    // const accountSid = "ACc3b07c329cd2ac8ac317f9b4acc48794";
-    // const authToken = "b92a4a4576b28dcea35a287f4bd0a176";
-    // const client = require("twilio")(accountSid, authToken);
-
-    // client.messages.create({
-    //   body: "This is a test Text message from kaelon",
-    //   // from: process.env.TWILIO_SMS_NUM, // Twillio Number
-    //   from: "+13175763401", // Twillio Number
-    //   to: "+12602554797",
-    // });
+    client.messages.create({
+      body: text,
+      // from: process.env.TWILIO_SMS_NUM, // Twillio Number
+      from: "+13175763401", // Twillio Number
+      to: "+12602554797",
+    });
 
     this.setState({
       messages: [

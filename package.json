@@ -3,23 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-<<<<<<< HEAD
     "@material-ui/core": "^4.10.0",
     "@material-ui/icons": "^4.9.1",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
-    "@types/classnames": "^2.2.10",
-    "@types/jest": "^24.0.0",
-    "@types/node": "^12.0.0",
-    "@types/react": "^16.9.0",
-    "@types/react-dom": "^16.9.0",
-    "@types/react-router-dom": "^5.1.5",
-    "@types/reactstrap": "^8.4.2",
-    "classnames": "^2.2.6",
-    "prop-types": "^15.7.2",
-=======
-    "@material-ui/core": "^4.9.14",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
@@ -27,8 +12,10 @@
     "@types/node": "^12.12.42",
     "@types/react": "^16.9.35",
     "@types/react-dom": "^16.9.8",
+    "@types/react-router-dom": "^5.1.5",
     "@types/reactstrap": "^8.4.2",
->>>>>>> 83f0c73ebe846df710d70ee4e6cbaa1260d218e4
+    "bootstrap": "^4.5.0",
+    "js-to-ts-converter": "^0.16.3",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
@@ -43,6 +30,7 @@
     "eject": "react-scripts eject"
   },
   "proxy": "http://localhost:3001",
+
   "eslintConfig": {
     "extends": "react-app"
   },

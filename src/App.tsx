@@ -5,18 +5,21 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
-import "./App.css";
+//import "./App.css";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Auth from "./components/Auth";
 import Navigations from "./components/Navigations";
 import ContactIndex from "././components/contact/ContactIndex";
 import UserIndex from "././components/user/UserIndex";
+import ContactCreate from "./components/contact/ContactCreate";
 // import ContactCreate from "././components/contact/ContactCreate";
 
 enum UserRoles {
   admin = "admin",
-  user = "user",
+  user = "assistant",
+  all = "salesperson"
+
 }
 const userRoles = {
   admins: [String(UserRoles.admin)],
@@ -25,6 +28,16 @@ const userRoles = {
 };
 const App: React.FunctionComponent = () => {
   const [sessionToken, setSessionToken] = React.useState<any>("");
+  // <Router>
+  //   <Navigator />
+  //   <Switch>
+  //     <Route exact path='/' component={Login} />
+  //     <Route path='./Signup' component={Signup} />
+  //     <Route path='./Contact' component={ContactCreate} />
+  //     <Route component={NotFound} />
+  //   </Switch>
+  // </Router>
+
 
   React.useEffect(() => {
     if (localStorage.getItem("token")) {

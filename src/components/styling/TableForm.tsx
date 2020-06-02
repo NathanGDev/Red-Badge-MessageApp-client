@@ -11,30 +11,30 @@ const styles = (theme: any) => ({
     backgroundRepeat: 'no-repeat',
   },
   paper: {
-    padding: theme.spacing(2, 1),
+    padding: theme.spacing(4, 3),
     [theme.breakpoints.up('md')]: {
-      padding: theme.spacing(2, 6),
+      padding: theme.spacing(8, 6),
     },
   },
 });
 
-function AppForm(props: any) {
+function TableForm(props: any) {
   const { children, classes } = props;
 
   return (
     <div className={classes.root}>
-      <Container>
-        {/* <Box mt={7} mb={12}> */}
+      <Container maxWidth="sm">
+        <Box mt={7} mb={12}>
           <Paper className={classes.paper}>{children}</Paper>
-        {/* </Box> */}
+        </Box>
       </Container>
     </div>
   );
 }
 
-AppForm.propTypes = {
+TableForm.propTypes = {
   children: PropTypes.node.isRequired,
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(AppForm);
+export default withStyles(styles)(TableForm);

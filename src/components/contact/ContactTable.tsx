@@ -22,35 +22,37 @@ const useStyles = makeStyles({
   },
 });
 
-// function createData(firstName: string, lastName: string, mobileNum: string, fbMsgrId: string) {
-//   return { firstName, lastName, mobileNum, fbMsgrId};
-// }
+function createData(firstName: string, lastName: string, mobileNum: string, fbMsgrId: string) {
+  return { firstName, lastName, mobileNum, fbMsgrId};
+}
 
-const UserTypeTable = (props: any) => {
+const ContactTable = (props: any) => {
 
-  const deleteUserType = (userType: any) => { 
-    fetch(`http://localhost:3001/usertype/${userType.id}`, { 
+  const deleteContact = (contact: any) => { 
+    fetch(`http://localhost:3001/contact/${contact.id}`, { 
         method: 'DELETE',
         headers: new Headers({
         'Content-Type': 'application/json',
         'Authorization': props.token 
         })
     })
-    .then(() => props.fetchUserTypes()) 
+    .then(() => props.fetchContacts()) 
 }
 
-const userTypeMapper = () => {
-    return props.userTypes.map((usertype: any, index: any) => { 
+const contactMapper = () => {
+    return props.contacts.map((contact: any, index: any) => { 
         return(
           // <TableContainer component={Paper}>
             <Table>
             <TableHead>
           <TableRow key={index}>
-          <TableCell>{usertype.userType}</TableCell>
-          <TableCell>{usertype.desription}</TableCell>
-          <TableCell>{usertype.active}</TableCell>
-            <Button onClick={() => {props.editUpdateUserType(usertype); props.updateOn()}}><UpdateIcon /></Button> 
-            <Button onClick={() => {deleteUserType(usertype)}}><DeleteIcon /></Button>
+          <TableCell>{contact.id}</TableCell>
+          <TableCell>{contact.firstName}</TableCell>
+          <TableCell>{contact.lastName}</TableCell>
+          <TableCell>{contact.mobileNum}</TableCell>
+          <TableCell>{contact.fbMsgrId}</TableCell>
+            <Button onClick={() => {props.editUpdateContact(contact); props.updateOn()}}><UpdateIcon /></Button> 
+            <Button onClick={() => {deleteContact(contact)}}><DeleteIcon /></Button>
       </TableRow>
       </TableHead>
       </Table>
@@ -62,24 +64,25 @@ const userTypeMapper = () => {
   return (
     <AppForm>
     <TableRow>
-    <h3>User Type</h3>
+    <h3>Contact</h3>
     <hr/>
     <Table>
         <TableHead>
             <TableRow>
                 <th>#</th>
-                <th>User Type</th>
-                <th>Description</th>
-                <th>Active</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Mobile</th>
+                <th>FB Msgr</th>
             </TableRow>
         </TableHead>
         <tbody>
-            {userTypeMapper()}
+            {contactMapper()}
         </tbody>
     </Table>
     </TableRow>
     </AppForm>
   );
 };
-export default UserTypeTable;
+export default ContactTable;
 

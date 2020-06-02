@@ -1,37 +1,40 @@
+import withRoot from '../styling/withRoot';
 import React, { useState, useEffect, useReducer } from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import UserTypeCreate from './UserTypeCreate';
 import UserTypeEdit from './UserTypeEdit';
 import UserTypeTable from './UserTypeTable';
+import NavBar from '../NavBar';
 // import APIURL from '../../helpers/environment';
 
-const UserIndex = (props: any) => {
-    const [users, setUsers] = useState([]);
+
+const UserTypeIndex = (props: any) => {
+    const [userTypes, setUserTypes] = useState([]);
     const [updateActive, setUpdateActive] = useState(false);
-    const [userToUpdate, setUserToUpdate] = useState({});
+    const [userTypeToUpdate, setUserTypeToUpdate] = useState({});
 
     console.log(props.token)
 
 
-    const fetchUsers = () => {
-        fetch(`http://localhost:3001/user/`, {
+    const fetchUserTypes = () => {
+        fetch(`http://localhost:3001/usertype/`, {
             method: 'GET',
             headers: new Headers({
                 'Content-Type': 'application/json',
                 'Authorization': props.token
             })
         }).then((res) => res.json())
-            .then((userData) => {
-                setUsers(userData)
+            .then((userTypeData) => {
+                setUserTypes(userTypeData)
             })
     }
 
     useEffect(() => {
-        fetchUsers();
+        fetchUserTypes();
     }, [])
 
-    const editUpdateUser = (user: any) => {
-        setUserToUpdate(user);
+    const editUpdateUserType = (userType: any) => {
+        setUserTypeToUpdate(userType);
     }
 
     const updateOn = () => {
@@ -44,13 +47,14 @@ const UserIndex = (props: any) => {
 
     return (
         <Container>
-            <UserTypeCreate fetchUsers={fetchUsers} token={props.token}/>
-            <UserTypeTable users={users} editUpdateUser={editUpdateUser}
-                updateOn={updateOn} fetchUsers={fetchUsers} token={props.token} />
-            {updateActive ? <UserTypeEdit userToUpdate={userToUpdate}
-                updateOff={updateOff} token={props.token} fetchUsers={fetchUsers} /> : <></>}
+            <NavBar />
+            <UserTypeCreate fetchUserTypes={fetchUserTypes} token={props.token}/>
+            <UserTypeTable userTypes={userTypes} editUpdateUserType={editUpdateUserType}
+                updateOn={updateOn} fetchUserTypes={fetchUserTypes} token={props.token} />
+            {updateActive ? <UserTypeEdit userTypeToUpdate={userTypeToUpdate}
+                updateOff={updateOff} token={props.token} fetchUserTypes={fetchUserTypes} /> : <></>}
         </Container>
     );
 };
 
-export default UserIndex;
+export default withRoot(UserTypeIndex);

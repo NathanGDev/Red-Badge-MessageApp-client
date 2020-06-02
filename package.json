@@ -14,6 +14,7 @@
     "@types/react-dom": "^16.9.8",
     "@types/react-router-dom": "^5.1.5",
     "@types/reactstrap": "^8.4.2",
+    "@types/styled-components": "^5.1.0",
     "bootstrap": "^4.5.0",
     "js-to-ts-converter": "^0.16.3",
     "react": "^16.13.1",
@@ -30,7 +31,6 @@
     "eject": "react-scripts eject"
   },
   "proxy": "http://localhost:3001",
-
   "eslintConfig": {
     "extends": "react-app"
   },

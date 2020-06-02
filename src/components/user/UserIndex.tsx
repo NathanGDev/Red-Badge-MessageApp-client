@@ -1,9 +1,12 @@
+import withRoot from '../styling/withRoot';
 import React, { useState, useEffect, useReducer } from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import UserCreate from './UserCreate';
 import UserEdit from './UserEdit';
 import UserTable from './UserTable';
+import NavBar from '../NavBar';
 // import APIURL from '../../helpers/environment';
+
 
 const UserIndex = (props: any) => {
     const [users, setUsers] = useState([]);
@@ -44,6 +47,7 @@ const UserIndex = (props: any) => {
 
     return (
         <Container>
+            <NavBar />
             <UserCreate fetchUsers={fetchUsers} token={props.token}/>
             <UserTable users={users} editUpdateUser={editUpdateUser}
                 updateOn={updateOn} fetchUsers={fetchUsers} token={props.token} />
@@ -53,4 +57,4 @@ const UserIndex = (props: any) => {
     );
 };
 
-export default UserIndex;
+export default withRoot(UserIndex);

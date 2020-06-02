@@ -3,26 +3,26 @@ import { createMuiTheme } from '@material-ui/core/styles';
 const rawTheme = createMuiTheme({
   palette: {
     primary: {
-      light: '#15C404', //green
-      main: '#15C404', 
+      light: '#32cd32', //green
+      main: '#32cd32', 
     },
     secondary: {
       light: '#FFFFFF', //white
-      main: '#FFFFFF', 
-      dark: '#15C404', 
+      main: '#32cd32', 
+      dark: '#32cd32', 
     },
     warning: {
-      main: '#15C404',
+      main: '#32cd32',
     },
     error: {
-      main: '#15C404',
+      main: '#32cd32',
     },
     success: {
-      main: '#15C404',
+      main: '#32cd32',
     },
   },
   typography: {
-    fontFamily: "'Poppins', sans-serif",
+    fontFamily: "'Roboto', sans-serif",
     fontSize: 14,
     fontWeightLight: 300, // Work Sans
     fontWeightRegular: 400, // Work Sans
@@ -35,7 +35,7 @@ const fontHeader = {
   color: rawTheme.palette.text.primary,
   fontWeight: rawTheme.typography.fontWeightMedium,
   fontFamily: rawTheme.typography.fontFamily,
-  textTransform: 'uppercase',
+  // textTransform: 'uppercase',
 };
 
 const theme = {

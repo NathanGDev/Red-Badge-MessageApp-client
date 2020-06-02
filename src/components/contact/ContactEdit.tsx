@@ -1,3 +1,4 @@
+import withRoot from '../styling/withRoot';
 import React, { useState } from 'react';
 import { Button, Form, FormGroup, Label, Input, Modal, ModalHeader, ModalBody } from 'reactstrap';
 // import APIURL from '../../helpers/environment';
@@ -61,4 +62,4 @@ const ContactEdit = (props: any) => {
   );
 };
 
-export default ContactEdit;
+export default withRoot(ContactEdit);

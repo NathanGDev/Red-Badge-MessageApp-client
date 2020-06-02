@@ -2,7 +2,7 @@ import withRoot from '../styling/withRoot';
 import React, { useState } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import { Form, FormGroup, Label, Input, Button } from "reactstrap";
-import Grid from '@material-ui/core/Grid';
+import Grid, { GridSpacing } from '@material-ui/core/Grid';
 import Typography from '../styling/Typography';
 import AppForm from '../styling/AppForm';
 import FormButton from '../styling/FormButton';
@@ -75,10 +75,12 @@ const ContactCreate = (props: any) => {
             <AppForm>
 
             <React.Fragment>
-            <Typography variant="h3">Add Contact</Typography>
+            <Typography variant="h5">Add Contact</Typography>
             </React.Fragment>
 
             <form onSubmit={handleSubmit}>
+            <Grid>
+            <Grid item xs={2}>
             <TextField
                 label="First Name"
                 defaultValue="firstName"
@@ -91,7 +93,8 @@ const ContactCreate = (props: any) => {
                 variant="outlined"
                 rowsMax={2}
             ></TextField>    
-
+            </Grid>
+            <Grid item xs>
             <TextField
                 label="Last Name"
                 defaultValue="lastName"
@@ -104,7 +107,8 @@ const ContactCreate = (props: any) => {
                 variant="outlined"
                 rowsMax={2}
             ></TextField>
-
+            </Grid>
+            <Grid item xs>
             <TextField
                 label="Mobile Number"
                 defaultValue="mobileNum"
@@ -117,6 +121,8 @@ const ContactCreate = (props: any) => {
                 variant="outlined"
                 rowsMax={2}
             ></TextField>
+            </Grid>
+            <Grid item xs>
             <TextField
                 label="FB Msgr Id"
                 defaultValue="fbMsgrId"
@@ -129,7 +135,11 @@ const ContactCreate = (props: any) => {
                 variant="outlined"
                 rowsMax={2}
             ></TextField>
+            </Grid>
+            <Grid item xs>
                 <FormButton type="submit" color="secondary" fullWidth>Add Contact</FormButton>
+                </Grid>
+                </Grid>
                 </form>
             </AppForm>
         </React.Fragment>

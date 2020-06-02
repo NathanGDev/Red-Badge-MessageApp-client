@@ -3,7 +3,8 @@ import React, { useState, useEffect, useReducer } from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import ContactCreate from './ContactCreate';
 import ContactEdit from './ContactEdit';
-import ContactCards from './ContactCards';
+import ContactTable from './ContactTable';
+import NavBar from '../NavBar';
 // import APIURL from '../../helpers/environment';
 
 const ContactIndex = (props: any) => {
@@ -45,8 +46,9 @@ const ContactIndex = (props: any) => {
 
     return (
         <Container>
+            <NavBar />
             <ContactCreate fetchContacts={fetchContacts} token={props.token}/>
-            <ContactCards contacts={contacts} editUpdateContact={editUpdateContact}
+            <ContactTable contacts={contacts} editUpdateContact={editUpdateContact}
                 updateOn={updateOn} fetchContacts={fetchContacts} token={props.token} />
             {updateActive ? <ContactEdit contactToUpdate={contactToUpdate}
                 updateOff={updateOff} token={props.token} fetchContacts={fetchContacts} /> : <></>}

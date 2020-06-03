@@ -42,8 +42,18 @@ const styles = (theme: any) => ({
   },
 });
 
+interface clearTokenHelper {
+  clearToken: (event: React.MouseEvent<HTMLButtonElement>) => any;
+}
+
 function NavBar(props: any) {
   const { classes } = props;
+  // const { clearToken } = props;
+
+  // const [contacts, setContacts] = useState([]);
+  // const [users, setContacts] = useState([]);
+  // const [contacts, setContacts] = useState([]);
+
 
   const [anchorEl, setAnchorEl] = React.useState(null);
 //   const [sessionToken, setSessionToken] = useState('');
@@ -57,15 +67,21 @@ function NavBar(props: any) {
     setAnchorEl(null);
   };
 
+  // const handleLogOut = () => {
+  //   clearToken();
+  // };
+
   return (
     <div>
       
       <NavBarStyling>
       <Toolbar className={classes.toolbar}>
-<div className={classes.menuLink}>
+      <div className={classes.menuLink}>
+
       <IconButton aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
         <MenuIcon className={classes.menuLink}/>
       </IconButton>
+
       <Menu
         id="simple-menu"
         anchorEl={anchorEl}
@@ -73,6 +89,7 @@ function NavBar(props: any) {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
+
         <MenuItem onClick={handleClose}>
             <Link
             color="inherit"
@@ -83,6 +100,7 @@ function NavBar(props: any) {
             Profile
             </Link>
         </MenuItem>
+        
         {/* {this.state.contacts ?  */}
         <MenuItem onClick={handleClose}>
             <Link
@@ -93,18 +111,10 @@ function NavBar(props: any) {
             >
             Contacts
             </Link>
-        {/* : null } */}
         </MenuItem>
-        {/* <MenuItem onClick={handleClose}>
-            <Link
-            color="inherit"
-            underline="none"
-            style={{ textDecoration: 'none' }}
-            // href=""
-            >
-            Messages
-            </Link>
-        </MenuItem> */}
+        {/* : null } */}
+
+        {/* {this.state.users ? */}
         <MenuItem onClick={handleClose}>
             <Link
             color="inherit"
@@ -115,6 +125,10 @@ function NavBar(props: any) {
             Users
             </Link>
         </MenuItem>
+        {/* : null } */}
+
+
+        {/* {this.state.userstypes ? */}
         <MenuItem onClick={handleClose}>
             <Link
             color="inherit"
@@ -125,7 +139,10 @@ function NavBar(props: any) {
             User Types
             </Link>
         </MenuItem>
-        <MenuItem onClick={handleClose}>
+        {/* : null } */}
+
+        {/* <MenuItem onClick={handleLogOut}> */}
+        <MenuItem>
             <Link
             color="inherit"
             underline="none"
@@ -135,19 +152,6 @@ function NavBar(props: any) {
             Logout
             </Link>
         </MenuItem>
-        {/* <MenuItem onClick={handleClose} >
-            <Link
-            type="submit"
-            onClick={props.clickLogout}
-            color="inherit"
-            underline="none"
-            style={{ textDecoration: 'none' }}
-            href="http://localhost:3003"
-            >
-            Log Out
-            </Link>
-        </MenuItem>       */}
-        
         </Menu>
       </div>
           {/* <div className={classes.left} /> */}
@@ -158,33 +162,20 @@ function NavBar(props: any) {
             underline="none"
             style={{ textDecoration: 'none' }}
             className={classes.title}
-            href="https://cmc-blue-lootlog-client.herokuapp.com"
+            // href=""
           >
             {'MessageMatic'}
           </Link>
           {/* <div className={classes.right}> */}
             <Link
-              color="inherit"
-              variant="h6"
-              underline="none"
-              style={{ textDecoration: 'none' }}
-              className={classes.rightLink}
-              href="http://localhost:3003/user/login"
+              // color="inherit"
+              // variant="h6"
+              // underline="none"
+              // style={{ textDecoration: 'none' }}
+              // className={classes.rightLink}
+              // href="http://localhost:3003/user/login"
             >
-              {/* {'Log Out'} */}
-            </Link>
-        
-            {/* <Link
-              variant="h6"
-              underline="none"
-              style={{ textDecoration: 'none' }}
-              className={clsx(classes.rightLink)}
-              href="http://localhost:3003/user/signup"
-            >
-              {'Sign Up'}
-            </Link> */}
-            
-            {/* <Button onClick={props.clearToken}>Log Out</Button> */}
+            </Link>            
         </Toolbar>
       </NavBarStyling>
     </div>

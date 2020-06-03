@@ -148,8 +148,7 @@ const ContactCreate = (props: any) => {
                         </Grid>
 
                     </Grid>
-                    <Grid container spacing={10}> 
-                    {/* <Grid container spacing={10} align="center"> commented out lines 10-13 in OverridableComponent.d.ts, 1st section after imports */}
+                    <Grid container spacing={10} > {/*commented out lines 10-13 in OverridableComponent.d.ts, 1st section after imports*/}
                     <Grid item xs>
                     <FormButton type="submit" color="secondary">Add Contact</FormButton>
                     </Grid>

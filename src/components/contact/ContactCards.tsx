@@ -52,5 +52,9 @@ const contactMapper = () => {
     </React.Fragment>
   );
 };
+<<<<<<< HEAD
 export default ContactCards;
 
+=======
+export default ContactCards;
+>>>>>>> 529503cabfc34113de4d97c9a83a5c9476037dc7

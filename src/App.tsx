@@ -3,87 +3,80 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Redirect,
 } from "react-router-dom";
 //import "./App.css";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Auth from "./components/Auth";
+// import Navigations from "./components/Navigations";
 import NavBar from "./components/NavBar";
 import ContactIndex from "././components/contact/ContactIndex";
 import UserIndex from "././components/user/UserIndex";
 import UserTypeIndex from "././components/userType/UserTypeIndex";
 
-// import ContactCreate from "././components/contact/ContactCreate";
-// import ContactTable from "././components/contact/ContactTable";
 
-enum UserRoles {
-  admin = "admin",
-  user = "assistant",
-  all = "salesperson"
-
-}
-const userRoles = {
-  admins: [String(UserRoles.admin)],
-  users: [String(UserRoles.user)],
-  all: [String(UserRoles.admin), String(UserRoles.user)],
+// enum UserRoles {
+//   admin = "admin",
+//   user = "user",
+//   assistant = "assistant",
+// }
+// const userRoles = {
+//   admins: [String(UserRoles.admin)],
+//   users: [String(UserRoles.user)],
+//   assistant: [String(UserRoles.assistant)],
+//   all: [
+//     String(UserRoles.admin),
+//     String(UserRoles.user),
+//     String(UserRoles.assistant),
+//   ],
+// };
+type TokenState = {
+  sessionToken?: any;
 };
-const App: React.FunctionComponent = () => {
-  const [sessionToken, setSessionToken] = React.useState<any>("");
-  // <Router>
-  //   <Navigator />
-  //   <Switch>
-  //     <Route exact path='/' component={Login} />
-  //     <Route path='./Signup' component={Signup} />
-  //     <Route path='./Contact' component={ContactCreate} />
-  //     <Route component={NotFound} />
-  //   </Switch>
-  // </Router>
 
+interface clearTokenHelper {
+  clearToken: () => any;
+}
 
-  React.useEffect(() => {
-    if (localStorage.getItem("token")) {
-      setSessionToken(localStorage.getItem("token"));
-    }
-  }, []);
+// class App extends React.Component<TokenState , TokenState> {
+class App extends React.Component<any , TokenState> {
+    constructor(props: any) {
+    super(props);
+    this.state = {
+      sessionToken: null,
+    };
+  }
 
-  const updateToken = (newToken: any) => {
+  updateToken = (newToken: any) => {
     localStorage.setItem("token", newToken);
-    setSessionToken(newToken);
+    // setSessionToken(newToken);
     console.log("updateToken -> newToken", newToken);
   };
 
-  const protectedViews = () => {
-    return (sessionToken === localStorage.getItem('token') ? <ContactIndex token={sessionToken}/>
-      : <Auth updateToken={updateToken} />)
+  clearToken = () => {
+    localStorage.clear();
+    this.setState(null);
+  };
+
+  sessionToken!: any;
+  
+  protectedViews = () => {
+    // return (this.sessionToken === localStorage.getItem('token') ? 
+    console.log('sessionToken = ' + this.sessionToken);
+    return (
+      localStorage.getItem('token') ? 
+      <ContactIndex token={this.sessionToken}/>
+      : <Auth updateToken={this.updateToken} />)
   }
 
-  return (
-    <Router>
-      {/* <div className="App">
-        <NavBar updateToken={updateToken} />
-      </div> */}
-      <Switch>
-        <Route exact path="/signup">
-          <Auth updateToken={updateToken} />
-        </Route>
-        <Route exact path="/login">
-          <Login updateToken={updateToken} />
-        </Route>
-        <Route exact path="/contact">
-          <ContactIndex token={sessionToken} />
-        </Route>
-        <Route exact path="/user">
-          <UserIndex token={sessionToken} />
-        </Route>
-        <Route exact path="/usertype">
-          <UserTypeIndex token={sessionToken} />
-        </Route>
-        {protectedViews()}
-      </Switch>
-    </Router>
-  );
-};
 
+  render() {
+    return (
+      <div>
+        {/* <NavBar clearToken={this.clearToken}/> */}
+        {this.protectedViews()}
+     </div>
+    );
+  }
+}
 export default App;
-

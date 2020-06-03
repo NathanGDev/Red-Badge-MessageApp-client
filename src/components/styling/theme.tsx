@@ -4,6 +4,9 @@ const rawTheme = createMuiTheme({
   palette: {
     primary: {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 529503cabfc34113de4d97c9a83a5c9476037dc7
       light: '#32cd32', //green
       main: '#32cd32', 
     },
@@ -24,6 +27,7 @@ const rawTheme = createMuiTheme({
   },
   typography: {
     fontFamily: "'Roboto', sans-serif",
+<<<<<<< HEAD
 =======
       light: '#15C404', //green
       main: '#15C404', 
@@ -46,6 +50,8 @@ const rawTheme = createMuiTheme({
   typography: {
     fontFamily: "'Poppins', sans-serif",
 >>>>>>> c8a4a63265a23410ba70fdb829cd2c84f79bbf00
+=======
+>>>>>>> 529503cabfc34113de4d97c9a83a5c9476037dc7
     fontSize: 14,
     fontWeightLight: 300, // Work Sans
     fontWeightRegular: 400, // Work Sans
@@ -59,10 +65,14 @@ const fontHeader = {
   fontWeight: rawTheme.typography.fontWeightMedium,
   fontFamily: rawTheme.typography.fontFamily,
 <<<<<<< HEAD
+<<<<<<< HEAD
   // textTransform: 'uppercase',
 =======
   textTransform: 'uppercase',
 >>>>>>> c8a4a63265a23410ba70fdb829cd2c84f79bbf00
+=======
+  // textTransform: 'uppercase',
+>>>>>>> 529503cabfc34113de4d97c9a83a5c9476037dc7
 };
 
 const theme = {

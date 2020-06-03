@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 529503cabfc34113de4d97c9a83a5c9476037dc7
 import withRoot from '../styling/withRoot';
 import React, { useState } from "react";
 import { makeStyles } from '@material-ui/core/styles';
@@ -41,6 +44,7 @@ const UserCreate = (props: any) => {
     const [mobileNum, setMobileNum] = useState("");
     const [fbMsgrId, setFbMsgrId] = useState("");
     const [email, setEmail] = useState("");
+<<<<<<< HEAD
 =======
 import React, { useState } from "react";
 import { Form, FormGroup, Label, Input, Button } from "reactstrap";
@@ -53,6 +57,8 @@ const UserCreate = (props: any) => {
     const [mobileNum, setMobileNum] = useState("");
     const [fbMsgrId, setFbMsgrId] = useState("");
 >>>>>>> c8a4a63265a23410ba70fdb829cd2c84f79bbf00
+=======
+>>>>>>> 529503cabfc34113de4d97c9a83a5c9476037dc7
     const [password, setPassword] = useState("");
     // const [userId, setUserId] = useState("");
 
@@ -67,16 +73,22 @@ const UserCreate = (props: any) => {
                     firstName: firstName,
                     lastName: lastName,
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 529503cabfc34113de4d97c9a83a5c9476037dc7
                     mobileNum: mobileNum,
                     fbMsgrId: fbMsgrId,
                     email: email,
                     password: password,
+<<<<<<< HEAD
 =======
                     email: email,
                     mobileNum: mobileNum,
                     fbMsgrId: fbMsgrId,
                     password: password
 >>>>>>> c8a4a63265a23410ba70fdb829cd2c84f79bbf00
+=======
+>>>>>>> 529503cabfc34113de4d97c9a83a5c9476037dc7
                     // salesUserId: userId
                 },
             }),
@@ -86,6 +98,9 @@ const UserCreate = (props: any) => {
             }),
         }).then((response) => response.json())
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 529503cabfc34113de4d97c9a83a5c9476037dc7
             .then((userData) => {
                 console.log(userData);
                 setFirstName('');
@@ -222,6 +237,7 @@ const UserCreate = (props: any) => {
 };
 
 export default withRoot(UserCreate);
+<<<<<<< HEAD
 =======
         .then((userData) => {
             console.log(userData);
@@ -307,3 +323,5 @@ export default withRoot(UserCreate);
 
 export default UserCreate;
 >>>>>>> c8a4a63265a23410ba70fdb829cd2c84f79bbf00
+=======
+>>>>>>> 529503cabfc34113de4d97c9a83a5c9476037dc7

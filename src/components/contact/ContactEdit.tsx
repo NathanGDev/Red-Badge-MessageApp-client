@@ -2,6 +2,9 @@ import withRoot from '../styling/withRoot';
 import React, { useState } from 'react';
 import { Button, Form, FormGroup, Label, Input, Modal, ModalHeader, ModalBody } from 'reactstrap';
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 529503cabfc34113de4d97c9a83a5c9476037dc7
 import { makeStyles } from '@material-ui/core/styles';
 import Grid, { GridSpacing } from '@material-ui/core/Grid';
 import Typography from '../styling/Typography';
@@ -37,12 +40,20 @@ image: {
 },
 }))
 
+<<<<<<< HEAD
+=======
+interface contactUpdateHelper {
+  contactUpdate(event: React.FormEvent<HTMLInputElement>): void;
+}
+
+>>>>>>> 529503cabfc34113de4d97c9a83a5c9476037dc7
 const ContactEdit = (props: any) => {
   const [editFirstName, setEditFirstName] = useState(props.contactToUpdate.firstName);
   const [editLastName, setEditLastName] = useState(props.contactToUpdate.lastName);
   const [editMobileNum, setEditMobileNum] = useState(props.contactToUpdate.mobileNum);
   const [editFbMsgrId, setEditFbMsgrId] = useState(props.contactToUpdate.fbMsgrId);
   const [editSalesUserId, setEditSalesUserId] = useState(props.contactToUpdate.salesUserId);
+<<<<<<< HEAD
 =======
 // import APIURL from '../../helpers/environment';
 
@@ -53,25 +64,37 @@ const ContactEdit = (props: any) => {
   const [editFbMsgrID, setEditFbMsgrID] = useState("");
   const [editSalesUserID, setEditSalesUserID] = useState("");
 >>>>>>> c8a4a63265a23410ba70fdb829cd2c84f79bbf00
+=======
+>>>>>>> 529503cabfc34113de4d97c9a83a5c9476037dc7
   const [editId, setEditId] = useState(props.contactToUpdate.id);
 
   // const handleClose = (event: any, reason: any) => {
   //   if (reason === 'clickaway') {
+<<<<<<< HEAD
   //     return;
+=======
+  //     return;  
+>>>>>>> 529503cabfc34113de4d97c9a83a5c9476037dc7
   //   }
   // };
 
   const contactUpdate = (event: any, contact: any) => {
+<<<<<<< HEAD
     event.preventDefault();
 <<<<<<< HEAD
     fetch(`http://localhost:3001/contact/${props.contactToUpdate.id}`, {
 =======
     fetch(`http://localhost:3001/contact/${editId}`, {
 >>>>>>> c8a4a63265a23410ba70fdb829cd2c84f79bbf00
+=======
+      event?.preventDefault();
+    fetch(`http://localhost:3001/contact/${props.contactToUpdate.id}`, {
+>>>>>>> 529503cabfc34113de4d97c9a83a5c9476037dc7
       method: 'PUT',
       body: JSON.stringify({
         contact: {
           firstName: editFirstName, lastName: editLastName,
+<<<<<<< HEAD
 <<<<<<< HEAD
           mobileNum: editMobileNum, fbMsgrId: editFbMsgrId,
           salesUserId: editSalesUserId
@@ -79,6 +102,10 @@ const ContactEdit = (props: any) => {
           mobileNum: editMobileNum, fbMsgrID: editFbMsgrID,
           salesUserID: editSalesUserID
 >>>>>>> c8a4a63265a23410ba70fdb829cd2c84f79bbf00
+=======
+          mobileNum: editMobileNum, fbMsgrId: editFbMsgrId,
+          salesUserId: editSalesUserId
+>>>>>>> 529503cabfc34113de4d97c9a83a5c9476037dc7
         }
       }),
       headers: new Headers({
@@ -94,10 +121,17 @@ const ContactEdit = (props: any) => {
   return (
     <Modal isOpen={true}>
 <<<<<<< HEAD
+<<<<<<< HEAD
       <AppForm>
       {/* <ModalHeader>Edit Contact</ModalHeader> */}
       <ModalBody>
         <form onSubmit={contactUpdate}> {/*changed onSubmit type in index.d.ts to any*/}
+=======
+      <AppForm>
+      {/* <ModalHeader>Edit Contact</ModalHeader> */}
+      <ModalBody>
+        <form onSubmit={props.contactUpdate}> {/*changed onSubmit type in index.d.ts to any*/}
+>>>>>>> 529503cabfc34113de4d97c9a83a5c9476037dc7
           {/* <form> */}
           <Grid container spacing={2}>
                         <Grid item xs>
@@ -174,6 +208,7 @@ const ContactEdit = (props: any) => {
           {/* <Button type="submit" align="center" onClick={handleClose}>Cancel</Button> */}
       </ModalBody>
       </AppForm>
+<<<<<<< HEAD
 =======
       <ModalHeader>Edit Contact</ModalHeader>
       <ModalBody>
@@ -194,6 +229,8 @@ const ContactEdit = (props: any) => {
         </Form>
       </ModalBody>
 >>>>>>> c8a4a63265a23410ba70fdb829cd2c84f79bbf00
+=======
+>>>>>>> 529503cabfc34113de4d97c9a83a5c9476037dc7
     </Modal>
   );
 };

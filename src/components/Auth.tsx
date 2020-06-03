@@ -12,18 +12,14 @@ const Auth = (props: any) => {
   }
 
   function toggler() {
-    return login ? (
+    return !login ? (
       <Signup updateToken={props.updateToken} />
     ) : (
       <Login updateToken={props.updateToken} />
     );
   }
 
-  return (
-    <div>
-      {toggler()}
-    </div>
-  );
+  return <div>{toggler()}</div>;
 };
 
 export default Auth;

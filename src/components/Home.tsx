@@ -3,21 +3,11 @@ import MessageList from "./messages/MessageList";
 import MessageForm from "./messages/MessageForm";
 import "./Home.css";
 import Message from "./messages/Message";
-import "../.env"
-
-// type MessageSender = {
-//   messages: [];
-// };
+import "../.env";
 
 interface MessageSender {
   clearToken: any;
 }
-//
-// type Messages = {
-//   me: boolean;
-//   author: string;
-//   body: string;
-// };
 
 class Home extends React.Component<any, { messages: any }> {
   constructor(props: any) {
@@ -27,20 +17,19 @@ class Home extends React.Component<any, { messages: any }> {
     };
   }
 
-  componentDidMount() {
-    fetch('http://localhost:3000/', {
-      method: 'POST',
-      headers: new Headers({}),
-      body: JSON.stringify({ message:}),
-    })
-  }
+  // componentDidMount() {
+  //   fetch('http://localhost:3000/', {
+  //     method: 'POST',
+  //     headers: new Headers({}),
+  //     body: JSON.stringify({ message:}),
+  //   })
+  // }
 
   handleNewMessage = (text: any) => {
-
     // Send an SMS using Twilio
     // const accountSid = process.env.TWILIO_ACCOUNT_SID;
     // const authToken = process.env.TWILIO_AUTH_TOKEN;
-    
+
     const accountSid = "ACc3b07c329cd2ac8ac317f9b4acc48794";
     const authToken = "b92a4a4576b28dcea35a287f4bd0a176";
     const client = require("twilio")(accountSid, authToken);
@@ -58,7 +47,6 @@ class Home extends React.Component<any, { messages: any }> {
         { me: true, author: "kaelon", body: text },
       ],
     });
-
   };
   render() {
     return (

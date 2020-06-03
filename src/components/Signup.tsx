@@ -1,11 +1,11 @@
-import withRoot from '././styling/withRoot';
+import withRoot from "././styling/withRoot";
 import React, { useState } from "react";
 import { Form, FormGroup, Label, Input, Button } from "reactstrap";
-import { makeStyles } from '@material-ui/core/styles';
-import Typography from '././styling/Typography';
-import AppForm from '././styling/AppForm';
-import FormButton from '././styling/FormButton';
-import TextField from '@material-ui/core/TextField';
+import { makeStyles } from "@material-ui/core/styles";
+import Typography from "././styling/Typography";
+import AppForm from "././styling/AppForm";
+import FormButton from "././styling/FormButton";
+import TextField from "@material-ui/core/TextField";
 // import APIURL from "../helpers/environment";
 
 const useStyles = makeStyles((theme) => ({
@@ -20,15 +20,15 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(2),
   },
   root: {
-    '& .MuiTextField-root': {
+    "& .MuiTextField-root": {
       margin: theme.spacing(1),
-      width: '25ch',
-  //   width: 200,
-    display: 'flex',
-    alignItems: 'center',
+      width: "25ch",
+      //   width: 200,
+      display: "flex",
+      alignItems: "center",
+    },
   },
-},
-}))
+}));
 
 const Signup = (props: any) => {
   const [email, setEmail] = useState("");
@@ -63,76 +63,80 @@ const Signup = (props: any) => {
   return (
     <React.Fragment>
       <AppForm>
-
         <React.Fragment>
           <Typography variant="h3">Sign Up</Typography>
         </React.Fragment>
 
-          <form onSubmit={handleSubmit}>
-            <TextField
-              label="First Name"
-              defaultValue="firstName"
-              onChange={(e: any) => setFirstName(e.target.value)}
-              value={firstName}
-              fullWidth
-              required={true}
-              name="firstname"
-              margin="normal"
-              variant="outlined"
-              rowsMax={2}
-            ></TextField>
-            <TextField
-              label="Last Name"
-              defaultValue="lastName"
-              onChange={(e: any) => setLastName(e.target.value)}
-              value={lastName}
-              fullWidth
-              required={true}
-              name="lastname"
-              margin="normal"
-              variant="outlined"
-              rowsMax={2}
-            ></TextField>
-            <TextField
-              label="Mobile Number"
-              defaultValue="mobileNum"
-              onChange={(e: any) => setMobileNum(e.target.value)}
-              value={mobileNum}
-              fullWidth
-              required={true}
-              name="mobileNum"
-              margin="normal"
-              variant="outlined"
-              rowsMax={2}
-            ></TextField>
-            <TextField
-              label="Email"
-              defaultValue="email"
-              onChange={(e: any) => setEmail(e.target.value)}
-              value={email}
-              fullWidth
-              required={true}
-              name="email"
-              margin="normal"
-              variant="outlined"
-              rowsMax={2}
-            ></TextField>
-            <TextField
-              label="Password"
-              defaultValue="password"
-              type="password"
-              onChange={(e: any) => setPassword(e.target.value)}
-              value={password}
-              fullWidth
-              required={true}
-              name="password"
-              margin="normal"
-              variant="outlined"
-              rowsMax={2}
-            ></TextField>
+        <form onSubmit={handleSubmit}>
+          <TextField
+            label="First Name"
+            defaultValue="firstName"
+            onChange={(e: any) => setFirstName(e.target.value)}
+            value={firstName}
+            fullWidth
+            required={true}
+            name="firstname"
+            margin="normal"
+            variant="outlined"
+            rowsMax={2}
+          ></TextField>
+          <TextField
+            label="Last Name"
+            defaultValue="lastName"
+            onChange={(e: any) => setLastName(e.target.value)}
+            value={lastName}
+            fullWidth
+            required={true}
+            name="lastname"
+            margin="normal"
+            variant="outlined"
+            rowsMax={2}
+          ></TextField>
+          <TextField
+            label="Mobile Number"
+            defaultValue="mobileNum"
+            onChange={(e: any) => setMobileNum(e.target.value)}
+            value={mobileNum}
+            fullWidth
+            required={true}
+            name="mobileNum"
+            margin="normal"
+            variant="outlined"
+            rowsMax={2}
+          ></TextField>
+          <TextField
+            label="Email"
+            defaultValue="email"
+            onChange={(e: any) => setEmail(e.target.value)}
+            value={email}
+            fullWidth
+            required={true}
+            name="email"
+            margin="normal"
+            variant="outlined"
+            rowsMax={2}
+          ></TextField>
+          <TextField
+            label="Password"
+            defaultValue="password"
+            type="password"
+            onChange={(e: any) => setPassword(e.target.value)}
+            value={password}
+            fullWidth
+            required={true}
+            name="password"
+            margin="normal"
+            variant="outlined"
+            rowsMax={2}
+          ></TextField>
 
-<FormButton type="submit" color="secondary">Sign Up</FormButton>
-                </form>
+          <FormButton type="submit" color="secondary">
+            Sign Up
+          </FormButton>
+          <div>
+            <a href="/signup">Need to create an account?</a>
+          </div>
+        </form>
       </AppForm>
     </React.Fragment>
   );

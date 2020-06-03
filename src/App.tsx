@@ -11,7 +11,6 @@ import ContactIndex from "././components/contact/ContactIndex";
 import UserIndex from "././components/user/UserIndex";
 import UserTypeIndex from "././components/userType/UserTypeIndex";
 
-
 // enum UserRoles {
 //   admin = "admin",
 //   user = "user",
@@ -61,9 +60,12 @@ class App extends React.Component<TokenState, TokenState> {
   sessionToken!: any;
 
   protectedViews = () => {
-    return (this.sessionToken === localStorage.getItem('token') ? <ContactIndex token={this.sessionToken} />
-      : <Auth updateToken={this.updateToken} />)
-  }
+    return this.sessionToken === localStorage.getItem("token") ? (
+      <ContactIndex token={this.sessionToken} />
+    ) : (
+      <Auth updateToken={this.updateToken} />
+    );
+  };
 
   // protectedViews = () => {
   //   return this.sessionToken === localStorage.getItem("token") ? (
@@ -73,28 +75,28 @@ class App extends React.Component<TokenState, TokenState> {
   //   );
   // };
 
-
   render() {
     return (
       <Router>
         {/* <div className="App">
           <Navigations
-            updateToken={this.updateToken}
-            clearToken={this.clearToken}
+          updateToken={this.updateToken}
+          clearToken={this.clearToken}
           />
         </div> */}
+        {this.protectedViews()}
         <Switch>
           {/* <Route exact path="/signin">
             <Login updateToken={this.updateToken} />
           </Route> */}
-          <Route path="/signup">
-            <Signup updateToken={this.updateToken} />
-          </Route>
           {/* <Route exact path="/home">
             <Home />
           </Route> */}
           <Route exact path="/login">
             <Login updateToken={this.updateToken} />
+          </Route>
+          <Route path="/signup">
+            <Signup updateToken={this.updateToken} />
           </Route>
           <Route exact path="/contact">
             <ContactIndex token={this.sessionToken} />
@@ -105,7 +107,6 @@ class App extends React.Component<TokenState, TokenState> {
           <Route exact path="/usertype">
             <UserTypeIndex token={this.sessionToken} />
           </Route>
-          {this.protectedViews()}
         </Switch>
       </Router>
     );

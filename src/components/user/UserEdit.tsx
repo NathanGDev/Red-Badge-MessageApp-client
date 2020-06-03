@@ -36,13 +36,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-<<<<<<< HEAD
-=======
 interface userUpdateHelper {
   userUpdate(event: React.FormEvent<HTMLInputElement>): void;
 }
 
->>>>>>> 529503cabfc34113de4d97c9a83a5c9476037dc7
 const UserEdit = (props: any) => {
   const [editFirstName, setEditFirstName] = useState(props.userToUpdate.firstName);
   const [editLastName, setEditLastName] = useState(props.userToUpdate.lastName);
@@ -86,11 +83,7 @@ const UserEdit = (props: any) => {
       <AppForm>
         {/* <ModalHeader>Edit User</ModalHeader> */}
         <ModalBody>
-<<<<<<< HEAD
-          <form onSubmit={userUpdate}> {/*changed onSubmit type in index.d.ts to any*/}
-=======
           <form onSubmit={props.userUpdate}> {/*changed onSubmit type in index.d.ts to any*/}
->>>>>>> 529503cabfc34113de4d97c9a83a5c9476037dc7
             {/* <form> */}
             <Grid container spacing={2}>
               <Grid item xs>

@@ -11,15 +11,9 @@ const styles = (theme: any) => ({
     backgroundRepeat: 'no-repeat',
   },
   paper: {
-// <<<<<<< HEAD
-    padding: theme.spacing(4, 3),
-    [theme.breakpoints.up('md')]: {
-      padding: theme.spacing(8, 6),
-// =======
     padding: theme.spacing(2, 1),
     [theme.breakpoints.up('md')]: {
       padding: theme.spacing(2, 6),
-// >>>>>>> 529503cabfc34113de4d97c9a83a5c9476037dc7
     },
   },
 });
@@ -29,17 +23,12 @@ function AppForm(props: any) {
 
   return (
     <div className={classes.root}>
-{/* <<<<<<< HEAD */}
+{/* ======= */}
       <Container>
         {/* <Box mt={7} mb={12}> */}
           <Paper className={classes.paper}>{children}</Paper>
         {/* </Box> */}
-      <Container maxWidth="sm">
-        <Box mt={7} mb={12}>
-          <Paper className={classes.paper}>{children}</Paper>
-        </Box>
-{/* =======
->>>>>>> 529503cabfc34113de4d97c9a83a5c9476037dc7 */}
+{/* >>>>>>> f973feab36ae351b3ec22b273e34f92177b1e1b8 */}
       </Container>
     </div>
   );

@@ -11,11 +11,9 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import DeleteIcon from '@material-ui/icons/Delete';
 import UpdateIcon from '@material-ui/icons/Update';
-// =======
 import SmsIcon from '@material-ui/icons/Sms';
 import AppForm from '../styling/AppForm';
 
-// >>>>>>> 529503cabfc34113de4d97c9a83a5c9476037dc7
 // import {Table, Button} from 'reactstrap';
 // import APIURL from '../../helpers/environment';
 
@@ -47,48 +45,48 @@ const contactMapper = () => {
         return(
           // <TableContainer component={Paper}>
             <Table>
-            <TableHead>
+            <TableBody>
           <TableRow key={index}>
           <TableCell>{contact.id}</TableCell>
           <TableCell>{contact.firstName}</TableCell>
           <TableCell>{contact.lastName}</TableCell>
           <TableCell>{contact.mobileNum}</TableCell>
           <TableCell>{contact.fbMsgrId}</TableCell>
-          <Button><SmsIcon /></Button> 
-            <Button onClick={() => {props.editUpdateContact(contact); props.updateOn()}}><UpdateIcon /></Button> 
-            <Button onClick={() => {deleteContact(contact)}}><DeleteIcon /></Button>
+          <TableCell><Button><SmsIcon /></Button> </TableCell>
+          <TableCell><Button onClick={() => {props.editUpdateContact(contact); props.updateOn()}}><UpdateIcon /></Button> </TableCell>
+           <TableCell> <Button onClick={() => {deleteContact(contact)}}><DeleteIcon /></Button></TableCell>
       </TableRow>
-      </TableHead>
+      </TableBody>
       </Table>
       // </TableContainer>
         )
     })
 }
-}
 
-//   return (
-// // <<<<<<< HEAD
-//     <TableRow>
-//     <h3>Contact</h3>
-//     <hr/>
-//     <Table>
-//         <TableHead>
-//             <TableRow>
-//                 <th>#</th>
-//                 <th>First Name</th>
-//                 <th>Last Name</th>
-//                 <th>Email</th>
-//                 <th>Mobile</th>
-//                 <th>FB Msgr</th>
-//             </TableRow>
-//         </TableHead>
-//         <tbody>
-//             {contactMapper()}
-//         </tbody>
-//     </Table>
-//     </TableRow>
-//   );
-// };
+
+  return (
+    // <AppForm>
+    // <h3>Contact</h3>
+    // <hr/>
+    <TableContainer>
+    <Table>
+        <TableHead>
+            <TableRow>
+                <TableCell>#</TableCell>
+                <TableCell>First Name</TableCell>
+                <TableCell>Last Name</TableCell>
+                <TableCell>Mobile</TableCell>
+                <TableCell>FB Msgr</TableCell>
+            </TableRow>
+        </TableHead>
+        <TableBody>
+            {contactMapper()}
+        </TableBody>
+    </Table>
+    </TableContainer>
+    // </AppForm>
+  );
+  };
 export default ContactTable;
 
 // // =======

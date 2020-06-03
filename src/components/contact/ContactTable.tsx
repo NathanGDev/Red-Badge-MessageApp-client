@@ -45,18 +45,18 @@ const contactMapper = () => {
         return(
           // <TableContainer component={Paper}>
             <Table>
-            <TableHead>
+            <TableBody>
           <TableRow key={index}>
           <TableCell>{contact.id}</TableCell>
           <TableCell>{contact.firstName}</TableCell>
           <TableCell>{contact.lastName}</TableCell>
           <TableCell>{contact.mobileNum}</TableCell>
           <TableCell>{contact.fbMsgrId}</TableCell>
-          <Button><SmsIcon /></Button> 
-            <Button onClick={() => {props.editUpdateContact(contact); props.updateOn()}}><UpdateIcon /></Button> 
-            <Button onClick={() => {deleteContact(contact)}}><DeleteIcon /></Button>
+          <TableCell><Button><SmsIcon /></Button> </TableCell>
+          <TableCell><Button onClick={() => {props.editUpdateContact(contact); props.updateOn()}}><UpdateIcon /></Button> </TableCell>
+           <TableCell> <Button onClick={() => {deleteContact(contact)}}><DeleteIcon /></Button></TableCell>
       </TableRow>
-      </TableHead>
+      </TableBody>
       </Table>
       // </TableContainer>
         )

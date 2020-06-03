@@ -9,11 +9,13 @@ import {
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Auth from "./components/Auth";
-import Navigations from "./components/Navigations";
+import NavBar from "./components/NavBar";
 import ContactIndex from "././components/contact/ContactIndex";
 import UserIndex from "././components/user/UserIndex";
-import ContactCreate from "./components/contact/ContactCreate";
+import UserTypeIndex from "././components/userType/UserTypeIndex";
+
 // import ContactCreate from "././components/contact/ContactCreate";
+// import ContactTable from "././components/contact/ContactTable";
 
 enum UserRoles {
   admin = "admin",
@@ -51,16 +53,16 @@ const App: React.FunctionComponent = () => {
     console.log("updateToken -> newToken", newToken);
   };
 
-  // const protectedViews = () => {
-  //   return (sessionToken === localStorage.getItem('token') ? <ContactIndex token={sessionToken}/>
-  //     : <Auth updateToken={updateToken} />)
-  // }
+  const protectedViews = () => {
+    return (sessionToken === localStorage.getItem('token') ? <ContactIndex token={sessionToken}/>
+      : <Auth updateToken={updateToken} />)
+  }
 
   return (
     <Router>
-      <div className="App">
-        <Navigations updateToken={updateToken} />
-      </div>
+      {/* <div className="App">
+        <NavBar updateToken={updateToken} />
+      </div> */}
       <Switch>
         <Route exact path="/signup">
           <Auth updateToken={updateToken} />
@@ -74,7 +76,10 @@ const App: React.FunctionComponent = () => {
         <Route exact path="/user">
           <UserIndex token={sessionToken} />
         </Route>
-        {/* {protectedViews()} */}
+        <Route exact path="/usertype">
+          <UserTypeIndex token={sessionToken} />
+        </Route>
+        {protectedViews()}
       </Switch>
     </Router>
   );

@@ -15,9 +15,15 @@ const styles = (theme: any) => ({
   backgroundDark: {
     backgroundColor: theme.palette.secondary.dark,
   },
+<<<<<<< HEAD
+  // padding: {
+  //   padding: theme.spacing(1),
+  // },
+=======
   padding: {
     padding: theme.spacing(1),
   },
+>>>>>>> c8a4a63265a23410ba70fdb829cd2c84f79bbf00
 });
 
 function Paper(props: any) {
@@ -28,9 +34,15 @@ function Paper(props: any) {
       square
       className={clsx(
         classes[`background${capitalize(background)}`],
+<<<<<<< HEAD
+        // {
+        //   [classes.padding]: padding,
+        // },
+=======
         {
           [classes.padding]: padding,
         },
+>>>>>>> c8a4a63265a23410ba70fdb829cd2c84f79bbf00
         className,
       )}
       {...other}
@@ -42,7 +54,11 @@ Paper.propTypes = {
   background: PropTypes.oneOf(['light', 'main', 'dark']),
   classes: PropTypes.object.isRequired,
   className: PropTypes.string,
+<<<<<<< HEAD
+  // padding: PropTypes.bool,
+=======
   padding: PropTypes.bool,
+>>>>>>> c8a4a63265a23410ba70fdb829cd2c84f79bbf00
 };
 
 export default withStyles(styles)(Paper);

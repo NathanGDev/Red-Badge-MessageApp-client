@@ -16,6 +16,7 @@ const styles = (theme: any) => ({
     backgroundColor: theme.palette.secondary.dark,
   },
 <<<<<<< HEAD
+<<<<<<< HEAD
   // padding: {
   //   padding: theme.spacing(1),
   // },
@@ -24,6 +25,11 @@ const styles = (theme: any) => ({
     padding: theme.spacing(1),
   },
 >>>>>>> c8a4a63265a23410ba70fdb829cd2c84f79bbf00
+=======
+  // padding: {
+  //   padding: theme.spacing(1),
+  // },
+>>>>>>> 529503cabfc34113de4d97c9a83a5c9476037dc7
 });
 
 function Paper(props: any) {
@@ -35,6 +41,7 @@ function Paper(props: any) {
       className={clsx(
         classes[`background${capitalize(background)}`],
 <<<<<<< HEAD
+<<<<<<< HEAD
         // {
         //   [classes.padding]: padding,
         // },
@@ -43,6 +50,11 @@ function Paper(props: any) {
           [classes.padding]: padding,
         },
 >>>>>>> c8a4a63265a23410ba70fdb829cd2c84f79bbf00
+=======
+        // {
+        //   [classes.padding]: padding,
+        // },
+>>>>>>> 529503cabfc34113de4d97c9a83a5c9476037dc7
         className,
       )}
       {...other}
@@ -55,10 +67,14 @@ Paper.propTypes = {
   classes: PropTypes.object.isRequired,
   className: PropTypes.string,
 <<<<<<< HEAD
+<<<<<<< HEAD
   // padding: PropTypes.bool,
 =======
   padding: PropTypes.bool,
 >>>>>>> c8a4a63265a23410ba70fdb829cd2c84f79bbf00
+=======
+  // padding: PropTypes.bool,
+>>>>>>> 529503cabfc34113de4d97c9a83a5c9476037dc7
 };
 
 export default withStyles(styles)(Paper);

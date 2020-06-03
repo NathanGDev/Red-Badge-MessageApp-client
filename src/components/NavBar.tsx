@@ -42,8 +42,13 @@ const styles = (theme: any) => ({
   },
 });
 
+interface clearTokenHelper {
+  clearToken: (event: React.MouseEvent<HTMLButtonElement>) => any;
+}
+
 function NavBar(props: any) {
   const { classes } = props;
+  // const { clearToken } = props;
 
   const [anchorEl, setAnchorEl] = React.useState(null);
 //   const [sessionToken, setSessionToken] = useState('');
@@ -55,6 +60,10 @@ function NavBar(props: any) {
 
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const handleLogOut = () => {
+    clearToken();
   };
 
   return (
@@ -83,6 +92,7 @@ function NavBar(props: any) {
             Profile
             </Link>
         </MenuItem>
+        {/* {this.state.contacts ?  */}
         <MenuItem onClick={handleClose}>
             <Link
             color="inherit"
@@ -92,8 +102,9 @@ function NavBar(props: any) {
             >
             Contacts
             </Link>
+        {/* : null } */}
         </MenuItem>
-        <MenuItem onClick={handleClose}>
+        {/* <MenuItem onClick={handleClose}>
             <Link
             color="inherit"
             underline="none"
@@ -102,7 +113,7 @@ function NavBar(props: any) {
             >
             Messages
             </Link>
-        </MenuItem>
+        </MenuItem> */}
         <MenuItem onClick={handleClose}>
             <Link
             color="inherit"
@@ -123,7 +134,7 @@ function NavBar(props: any) {
             User Types
             </Link>
         </MenuItem>
-        <MenuItem onClick={handleClose}>
+        <MenuItem onClick={handleLogOut}>
             <Link
             color="inherit"
             underline="none"

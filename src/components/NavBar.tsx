@@ -46,6 +46,11 @@ interface clearTokenHelper {
   clearToken: (event: React.MouseEvent<HTMLButtonElement>) => any;
 }
 
+// Props
+//    classes   (obj)
+//    clearToken (func)
+//    
+
 function NavBar(props: any) {
   const { classes } = props;
   const { clearToken } = props;

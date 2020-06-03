@@ -42,8 +42,13 @@ const styles = (theme: any) => ({
   },
 });
 
+interface clearTokenHelper {
+  clearToken: (event: React.MouseEvent<HTMLButtonElement>) => any;
+}
+
 function NavBar(props: any) {
   const { classes } = props;
+  // const { clearToken } = props;
 
   const [anchorEl, setAnchorEl] = React.useState(null);
 //   const [sessionToken, setSessionToken] = useState('');
@@ -55,6 +60,10 @@ function NavBar(props: any) {
 
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const handleLogOut = () => {
+    clearToken();
   };
 
   return (
@@ -125,7 +134,7 @@ function NavBar(props: any) {
             User Types
             </Link>
         </MenuItem>
-        <MenuItem onClick={handleClose}>
+        <MenuItem onClick={handleLogOut}>
             <Link
             color="inherit"
             underline="none"

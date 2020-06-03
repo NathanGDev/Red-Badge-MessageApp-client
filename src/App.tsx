@@ -35,21 +35,18 @@ type TokenState = {
   sessionToken?: any;
 };
 
-class App extends React.Component<TokenState, TokenState> {
-  constructor(props: any) {
+interface clearTokenHelper {
+  clearToken: () => any;
+}
+
+// class App extends React.Component<TokenState , TokenState> {
+class App extends React.Component<any , TokenState> {
+    constructor(props: any) {
     super(props);
     this.state = {
       sessionToken: null,
     };
   }
-
-  // componentDidMount() {
-  //   if (localStorage.getItem("token")) {
-  //     this.setState(() => {
-  //       localStorage.getItem("token");
-  //     });
-  //   }
-  // }
 
   updateToken = (newToken: any) => {
     localStorage.setItem("token", newToken);
@@ -65,53 +62,42 @@ class App extends React.Component<TokenState, TokenState> {
   sessionToken!: any;
   
   protectedViews = () => {
-    return (this.sessionToken === localStorage.getItem('token') ? <ContactIndex token={this.sessionToken}/>
+    // return (this.sessionToken === localStorage.getItem('token') ? 
+    console.log('sessionToken = ' + this.sessionToken);
+    return (
+      localStorage.getItem('token') ? 
+      <ContactIndex token={this.sessionToken}/>
       : <Auth updateToken={this.updateToken} />)
   }
-
-  // protectedViews = () => {
-  //   return this.sessionToken === localStorage.getItem("token") ? (
-  //     <Home token={this.updateToken}/>
-  //   ) : (
-  //     <Login updateToken={this.updateToken} />
-  //   );
-  // };
 
 
   render() {
     return (
-      <Router>
-        {/* <div className="App">
-          <Navigations
-            updateToken={this.updateToken}
-            clearToken={this.clearToken}
-          />
-        </div> */}
-        <Switch>
-          {/* <Route exact path="/signin">
-            <Login updateToken={this.updateToken} />
-          </Route> */}
-          <Route path="/signup">
-            <Signup updateToken={this.updateToken} />
-          </Route>
-          {/* <Route exact path="/home">
-            <Home />
-          </Route> */}
-          <Route exact path="/login">
-            <Login updateToken={this.updateToken} />
-          </Route>
-          <Route exact path="/contact">
-            <ContactIndex token={this.sessionToken} />
-          </Route>
-          <Route exact path="/user">
-            <UserIndex token={this.sessionToken} />
-          </Route>
-          <Route exact path="/usertype">
-            <UserTypeIndex token={this.sessionToken} />
-          </Route>
-          {this.protectedViews()}
-          </Switch>
-      </Router>
+      <div>
+        <NavBar clearToken={this.clearToken}/>
+        {this.protectedViews()}
+      </div>
+      // <Router>
+      //   <Switch>
+      //     this.sessionToken === localStorage.getItem('token') ?
+      //     <Route exact path="/contact">
+      //       <ContactIndex token={this.sessionToken} />
+      //     </Route>
+      //     <Route exact path="/user">
+      //       <UserIndex token={this.sessionToken} />
+      //     </Route>
+      //     <Route exact path="/usertype">
+      //       <UserTypeIndex token={this.sessionToken} />
+      //     </Route>
+      //     :
+      //     <Route path="/signup">
+      //       <Signup updateToken={this.updateToken} />
+      //     </Route>
+      //     <Route exact path="/login">
+      //       <Login updateToken={this.updateToken} />
+      //     </Route>
+      //     </Switch>}
+      // </Router>
     );
   }
 }

@@ -37,7 +37,7 @@ const Login = (props: any) => {
 
   let handleSubmit = (event: any) => {
     event?.preventDefault();
-    fetch(`http://localhost:3001/signin`, {
+    fetch(`http://localhost:3000/signin`, {
       method: "POST",
       body: JSON.stringify({
         user: {

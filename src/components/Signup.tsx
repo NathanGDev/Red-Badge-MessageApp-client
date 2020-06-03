@@ -39,7 +39,7 @@ const Signup = (props: any) => {
 
   let handleSubmit = (event: any) => {
     event.preventDefault();
-    fetch(`http://localhost:3001/signin/create`, {
+    fetch(`http://localhost:3000/signin/create`, {
       method: "POST",
       body: JSON.stringify({
         user: {
@@ -67,6 +67,7 @@ const Signup = (props: any) => {
           <Typography variant="h3">Sign Up</Typography>
         </React.Fragment>
 
+<<<<<<< HEAD
         <form onSubmit={handleSubmit}>
           <TextField
             label="First Name"
@@ -137,6 +138,73 @@ const Signup = (props: any) => {
             <a href="/signup">Need to create an account?</a>
           </div>
         </form>
+=======
+          <form onSubmit={handleSubmit}>
+            <TextField
+              label="First Name"
+              defaultValue="firstName"
+              onChange={(e: any) => setFirstName(e.target.value)}
+              value={firstName}
+              fullWidth
+              required={true}
+              name="firstname"
+              margin="normal"
+              variant="outlined"
+              rowsMax={2}
+            ></TextField>
+            <TextField
+              label="Last Name"
+              defaultValue="lastName"
+              onChange={(e: any) => setLastName(e.target.value)}
+              value={lastName}
+              fullWidth
+              required={true}
+              name="lastname"
+              margin="normal"
+              variant="outlined"
+              rowsMax={2}
+            ></TextField>
+            <TextField
+              label="Mobile Number"
+              defaultValue="mobileNum"
+              onChange={(e: any) => setMobileNum(e.target.value)}
+              value={mobileNum}
+              fullWidth
+              required={true}
+              name="mobileNum"
+              margin="normal"
+              variant="outlined"
+              rowsMax={2}
+            ></TextField>
+            <TextField
+              label="Email"
+              defaultValue="email"
+              onChange={(e: any) => setEmail(e.target.value)}
+              value={email}
+              fullWidth
+              required={true}
+              name="email"
+              margin="normal"
+              variant="outlined"
+              rowsMax={2}
+            ></TextField>
+            <TextField
+              label="Password"
+              defaultValue="password"
+              type="password"
+              onChange={(e: any) => setPassword(e.target.value)}
+              value={password}
+              fullWidth
+              required={true}
+              name="password"
+              margin="normal"
+              variant="outlined"
+              rowsMax={2}
+            ></TextField>
+            <FormButton type="submit" color="secondary">Sign Up</FormButton>
+            <div><a href="/login">Already have an account?</a></div>
+          </form>
+>>>>>>> 529503cabfc34113de4d97c9a83a5c9476037dc7
       </AppForm>
     </React.Fragment>
   );

@@ -80,9 +80,7 @@ const ContactEdit = (props: any) => {
       <AppForm>
       {/* <ModalHeader>Edit Contact</ModalHeader> */}
       <ModalBody>
-        <form onSubmit={contactUpdate}> 
-        {/*changed onSubmit type in index.d.ts to any*/}
-        {/* <form onSubmit={props.contactUpdate}> */}
+        <form onSubmit={props.contactUpdate}>
           {/* <form> */}
           <Grid container spacing={2}>
                         <Grid item xs>

@@ -1,7 +1,34 @@
+import withRoot from '././styling/withRoot';
 import React, { useState } from "react";
-import { Form, FormGroup, Label, Input } from "reactstrap";
-import { MenuItem, Button, Menu } from "@material-ui/core";
+import { Form, FormGroup, Label, Input, Button } from "reactstrap";
+import { makeStyles } from '@material-ui/core/styles';
+import Typography from '././styling/Typography';
+import AppForm from '././styling/AppForm';
+import FormButton from '././styling/FormButton';
+import TextField from '@material-ui/core/TextField';
 // import APIURL from "../helpers/environment";
+
+const useStyles = makeStyles((theme) => ({
+  form: {
+    marginTop: theme.spacing(6),
+  },
+  button: {
+    marginTop: theme.spacing(3),
+    marginBottom: theme.spacing(2),
+  },
+  feedback: {
+    marginTop: theme.spacing(2),
+  },
+  root: {
+    '& .MuiTextField-root': {
+      margin: theme.spacing(1),
+      width: '25ch',
+  //   width: 200,
+    display: 'flex',
+    alignItems: 'center',
+  },
+},
+}))
 
 const Signup = (props: any) => {
   const [email, setEmail] = useState("");
@@ -9,12 +36,10 @@ const Signup = (props: any) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [mobileNum, setMobileNum] = useState("");
-  const [userTypeSalesman, setUserTypeSalesman] = useState<boolean>(false);
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null); //  MenuDropdown Toggle
 
   let handleSubmit = (event: any) => {
     event.preventDefault();
-    fetch(`http://localhost:1337/signin/create`, {
+    fetch(`http://localhost:3001/signin/create`, {
       method: "POST",
       body: JSON.stringify({
         user: {
@@ -23,7 +48,6 @@ const Signup = (props: any) => {
           firstName: firstName,
           lastName: lastName,
           mobileNum: mobileNum,
-          userType: userTypeSalesman,
         },
       }),
       headers: new Headers({
@@ -36,103 +60,82 @@ const Signup = (props: any) => {
       });
   };
 
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = (event: any) => {
-    setAnchorEl(null);
-    setUserTypeSalesman(true);
-    let { userTypeSalesman } = event?.currentTarget.dataset;
-    console.log(userTypeSalesman);
-  };
-
   return (
-    <div className="main-auth">
-      <h1>Sign up</h1>
-      <FormGroup>
-        <label htmlFor="firstName">First Name: </label>
-        <Input
-          className="auth-inputs"
-          onChange={(e) => setFirstName(e.target.value)}
-          name="firstname"
-          value={firstName}
-          required={true}
-        />
-      </FormGroup>
-      <FormGroup>
-        <label htmlFor="lastName">Last Name: </label>
-        <Input
-          className="auth-inputs"
-          onChange={(e) => setLastName(e.target.value)}
-          name="lastName"
-          value={lastName}
-          required={true}
-        />
-      </FormGroup>
-      <FormGroup>
-        <label htmlFor="mobileNum">Phone Number: </label>
-        <Input
-          className="auth-inputs"
-          onChange={(e) => setMobileNum(e.target.value)}
-          name="mobileNum"
-          value={mobileNum}
-          required={true}
-        />
-      </FormGroup>
-      <Form onSubmit={handleSubmit}>
-        <FormGroup>
-          <Label htmlFor="email">Email: </Label>
-          <Input
-            className="auth-inputs"
-            onChange={(e) => setEmail(e.target.value)}
-            name="email"
-            value={email}
-            required={true}
-          />
-        </FormGroup>
-        <FormGroup>
-          <label htmlFor="password">Password: </label>
-          <Input
-            className="auth-inputs"
-            onChange={(e) => setPassword(e.target.value)}
-            name="password"
-            type="password"
-            value={password}
-            required={true}
-          />
-        </FormGroup>
-        <FormGroup>
-          <Button
-            aria-controls="simple-menu"
-            aria-haspopup="true"
-            onClick={handleClick}
-          >
-            Open Menu
-          </Button>
-          <Menu
-            id="simple-menu"
-            anchorEl={anchorEl}
-            keepMounted
-            open={Boolean(anchorEl)}
-            onClose={handleClose}
-          >
-            <MenuItem data-my-value={userTypeSalesman} onClick={handleClose}>
-              <div>Salesman</div>
-            </MenuItem>
-            <MenuItem onClick={handleClose} disabled>
-              Assistant
-            </MenuItem>
-            <MenuItem onClick={handleClose} disabled>
-              System Admin
-            </MenuItem>
-          </Menu>
-        </FormGroup>
-        <br />
-        <Button onClick={handleSubmit}>Signup</Button>
-      </Form>
-    </div>
+    <React.Fragment>
+      <AppForm>
+
+        <React.Fragment>
+          <Typography variant="h3">Sign Up</Typography>
+        </React.Fragment>
+
+          <form onSubmit={handleSubmit}>
+            <TextField
+              label="First Name"
+              defaultValue="firstName"
+              onChange={(e: any) => setFirstName(e.target.value)}
+              value={firstName}
+              fullWidth
+              required={true}
+              name="firstname"
+              margin="normal"
+              variant="outlined"
+              rowsMax={2}
+            ></TextField>
+            <TextField
+              label="Last Name"
+              defaultValue="lastName"
+              onChange={(e: any) => setLastName(e.target.value)}
+              value={lastName}
+              fullWidth
+              required={true}
+              name="lastname"
+              margin="normal"
+              variant="outlined"
+              rowsMax={2}
+            ></TextField>
+            <TextField
+              label="Mobile Number"
+              defaultValue="mobileNum"
+              onChange={(e: any) => setMobileNum(e.target.value)}
+              value={mobileNum}
+              fullWidth
+              required={true}
+              name="mobileNum"
+              margin="normal"
+              variant="outlined"
+              rowsMax={2}
+            ></TextField>
+            <TextField
+              label="Email"
+              defaultValue="email"
+              onChange={(e: any) => setEmail(e.target.value)}
+              value={email}
+              fullWidth
+              required={true}
+              name="email"
+              margin="normal"
+              variant="outlined"
+              rowsMax={2}
+            ></TextField>
+            <TextField
+              label="Password"
+              defaultValue="password"
+              type="password"
+              onChange={(e: any) => setPassword(e.target.value)}
+              value={password}
+              fullWidth
+              required={true}
+              name="password"
+              margin="normal"
+              variant="outlined"
+              rowsMax={2}
+            ></TextField>
+
+<FormButton type="submit" color="secondary">Sign Up</FormButton>
+                </form>
+      </AppForm>
+    </React.Fragment>
   );
 };
 
-export default Signup;
+export default withRoot(Signup);

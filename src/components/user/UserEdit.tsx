@@ -83,6 +83,8 @@ const UserEdit = (props: any) => {
       <AppForm>
         {/* <ModalHeader>Edit User</ModalHeader> */}
         <ModalBody>
+          {/* <form onSubmit={userUpdate}>  */}
+          {/*changed onSubmit type in index.d.ts to any*/}
           <form onSubmit={props.userUpdate}> {/*changed onSubmit type in index.d.ts to any*/}
             {/* <form> */}
             <Grid container spacing={2}>

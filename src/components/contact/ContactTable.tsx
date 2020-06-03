@@ -1,3 +1,4 @@
+import withRoot from '../styling/withRoot';
 import React from 'react';
 import { withStyles, Theme, createStyles, makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -86,31 +87,5 @@ const contactMapper = () => {
     </TableContainer>
     // </AppForm>
   );
-  };
-export default ContactTable;
-
-// // =======
-//     // <AppForm>
-//     // <h3>Contact</h3>
-//     // <hr/>
-//     <TableContainer>
-//     <Table>
-//         <TableHead>
-//             <TableRow>
-//                 <TableCell>#</TableCell>
-//                 <TableCell>First Name</TableCell>
-//                 <TableCell>Last Name</TableCell>
-//                 <TableCell>Mobile</TableCell>
-//                 <TableCell>FB Msgr</TableCell>
-//             </TableRow>
-//         </TableHead>
-//         <TableBody>
-//             {contactMapper()}
-//         </TableBody>
-//     </Table>
-//     </TableContainer>
-//     // </AppForm>
-//   );
-// };
-// export default ContactTable;
-// >>>>>>> 529503cabfc34113de4d97c9a83a5c9476037dc7
+};
+export default withRoot(ContactTable);

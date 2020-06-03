@@ -1,6 +1,6 @@
 import React from "react";
 //import MessageList from "./messages/MessageList";
-import MessageForm from "./messages/MessageForm";
+//import MessageForm from "./messages/MessageForm";
 import "./Home.css";
 //import Message from "./messages/Message";
 import "../.env"
@@ -31,7 +31,7 @@ class Home extends React.Component<any, { messages: any }> {
     fetch('http://localhost:3000/', {
       method: 'POST',
       headers: new Headers({}),
-      body: JSON.stringify({ message:}),
+      // body: JSON.stringify({ message: ""}),
     })
   }
 
@@ -66,7 +66,7 @@ class Home extends React.Component<any, { messages: any }> {
         <h1 className="home-h1">Home page</h1>
         <div className="chatBox">
           {/* //<MessageList messages={this.state.messages} /> */}
-          <MessageForm onMessageSend={this.handleNewMessage} />
+          {/* <MessageForm onMessageSend={this.handleNewMessage} /> */}
         </div>
       </div>
     );

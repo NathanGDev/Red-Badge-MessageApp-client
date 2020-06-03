@@ -39,7 +39,7 @@ const Signup = (props: any) => {
 
   let handleSubmit = (event: any) => {
     event.preventDefault();
-    fetch(`http://localhost:3000/signin/create`, {
+    fetch(`http://localhost:3001/signin/create`, {
       method: "POST",
       body: JSON.stringify({
         user: {
@@ -130,9 +130,9 @@ const Signup = (props: any) => {
               variant="outlined"
               rowsMax={2}
             ></TextField>
-
-<FormButton type="submit" color="secondary">Sign Up</FormButton>
-                </form>
+            <FormButton type="submit" color="secondary">Sign Up</FormButton>
+            <div><a href="/login">Already have an account?</a></div>
+          </form>
       </AppForm>
     </React.Fragment>
   );

@@ -79,6 +79,8 @@ const UserTypeEdit = (props: any) => {
       <AppForm>
         {/* <ModalHeader>Edit User</ModalHeader> */}
         <ModalBody>
+          {/* <form onSubmit={userTypeUpdate}>  */}
+          {/*changed onSubmit type in index.d.ts to any*/}
           <form onSubmit={props.userTypeUpdate}> {/*changed onSubmit type in index.d.ts to any*/}
             {/* <form> */}
             <Grid container spacing={2}>

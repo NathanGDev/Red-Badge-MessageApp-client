@@ -48,6 +48,7 @@
     ]
   },
   "devDependencies": {
+    "@types/classnames": "^2.2.10",
     "@types/material-ui": "^0.21.7"
   }
 }

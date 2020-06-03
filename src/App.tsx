@@ -4,7 +4,13 @@ import "./App.css";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Home from "./components/Home";
-import Navigations from "./components/Navigations";
+import Auth from "./components/Auth";
+// import Navigations from "./components/Navigations";
+import NavBar from "./components/NavBar";
+import ContactIndex from "././components/contact/ContactIndex";
+import UserIndex from "././components/user/UserIndex";
+import UserTypeIndex from "././components/userType/UserTypeIndex";
+
 
 // enum UserRoles {
 //   admin = "admin",
@@ -52,35 +58,52 @@ class App extends React.Component<TokenState, TokenState> {
     this.setState(null);
   };
 
-
   sessionToken!: any;
 
-
   protectedViews = () => {
-    return this.sessionToken === localStorage.getItem("token") ? (
-      <Home token={this.updateToken} />
-    ) : (
-        <Login updateToken={this.updateToken} />
-      );
-  };
+    return (this.sessionToken === localStorage.getItem('token') ? <ContactIndex token={this.sessionToken} />
+      : <Auth updateToken={this.updateToken} />)
+  }
+
+  // protectedViews = () => {
+  //   return this.sessionToken === localStorage.getItem("token") ? (
+  //     <Home token={this.updateToken}/>
+  //   ) : (
+  //     <Login updateToken={this.updateToken} />
+  //   );
+  // };
+
+
   render() {
     return (
       <Router>
-        <div className="App">
+        {/* <div className="App">
           <Navigations
             updateToken={this.updateToken}
             clearToken={this.clearToken}
           />
-        </div>
+        </div> */}
         <Switch>
-          <Route exact path="/signin">
+          {/* <Route exact path="/signin">
             <Login updateToken={this.updateToken} />
-          </Route>
+          </Route> */}
           <Route path="/signup">
             <Signup updateToken={this.updateToken} />
           </Route>
-          <Route exact path="/home">
+          {/* <Route exact path="/home">
             <Home />
+          </Route> */}
+          <Route exact path="/login">
+            <Login updateToken={this.updateToken} />
+          </Route>
+          <Route exact path="/contact">
+            <ContactIndex token={this.sessionToken} />
+          </Route>
+          <Route exact path="/user">
+            <UserIndex token={this.sessionToken} />
+          </Route>
+          <Route exact path="/usertype">
+            <UserTypeIndex token={this.sessionToken} />
           </Route>
           {this.protectedViews()}
         </Switch>
@@ -89,81 +112,3 @@ class App extends React.Component<TokenState, TokenState> {
   }
 }
 export default App;
-
-// import React from "react";
-// import {
-//   BrowserRouter as Router,
-//   Switch,
-//   Route,
-//   Redirect,
-// } from "react-router-dom";
-// import "./App.css";
-// import Login from "./components/Login";
-// import Signup from "./components/Signup";
-// import Home from "./components/Home";
-// import Auth from "./components/Auth";
-// import Navigations from "./components/Navigations";
-
-// enum UserRoles {
-//   admin = "admin",
-//   user = "user",
-//   assistant = "assistant",
-// }
-// const userRoles = {
-//   admins: [String(UserRoles.admin)],
-//   users: [String(UserRoles.user)],
-//   assistant: [String(UserRoles.assistant)],
-//   all: [
-//     String(UserRoles.admin),
-//     String(UserRoles.user),
-//     String(UserRoles.assistant),
-//   ],
-// };
-// const App: React.FunctionComponent = () => {
-//   const [sessionToken, setSessionToken] = React.useState<any>("");
-
-//   React.useEffect(() => {
-//     if (localStorage.getItem("token")) {
-//       setSessionToken(localStorage.getItem("token"));
-//     }
-//   }, []);
-
-//   const updateToken = (newToken: any) => {
-//     localStorage.setItem("token", newToken);
-//     setSessionToken(newToken);
-//     console.log("updateToken -> newToken", newToken);
-//   };
-//   const clearToken = (sessionToken: any) => {
-//     localStorage.clear();
-//     setSessionToken("");
-//   };
-
-//   const protectedViews = () => {
-//     return sessionToken === localStorage.getItem("token") ? (
-//       <Home token={sessionToken} clearToken={clearToken} />
-//     ) : (
-//       <Login updateToken={updateToken} />
-//     );
-//   };
-//   return (
-//     <Router>
-//       <div className="App">
-//         <Navigations updateToken={updateToken} clearToken={clearToken} />
-//       </div>
-//       <Switch>
-//         <Route exact path="/signin">
-//           <Login updateToken={updateToken} />
-//         </Route>
-//         <Route path="/signup">
-//           <Signup updateToken={updateToken} />
-//         </Route>
-//         {/* <Route exact path="/home">
-//           <Home />
-//         </Route> */}
-//       </Switch>
-//       {protectedViews()}
-//     </Router>
-//   );
-// };
-
-// export default App;

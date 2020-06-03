@@ -48,7 +48,7 @@ interface clearTokenHelper {
 
 function NavBar(props: any) {
   const { classes } = props;
-  // const { clearToken } = props;
+  const { clearToken } = props;
 
   const [anchorEl, setAnchorEl] = React.useState(null);
 //   const [sessionToken, setSessionToken] = useState('');
@@ -62,9 +62,9 @@ function NavBar(props: any) {
     setAnchorEl(null);
   };
 
-  const handleLogOut = () => {
-    clearToken();
-  };
+  // const handleLogOut = () => {
+  //   clearToken();
+  // };
 
   return (
     <div>
@@ -134,7 +134,7 @@ function NavBar(props: any) {
             User Types
             </Link>
         </MenuItem>
-        <MenuItem onClick={handleLogOut}>
+        <MenuItem onClick={handleClose}>
             <Link
             color="inherit"
             underline="none"

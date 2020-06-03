@@ -52,7 +52,8 @@ const Login = (props: any) => {
       .then((response) => response.json())
       .then((data: any) => {
         props.updateToken(data.sessionToken);
-        console.log(data);
+        console.log('!!!!!!!!!!!!! Data = ' + JSON.stringify(data));
+        console.log('data.sessionToken = ' + data.sessionToken);
       });
   };
 

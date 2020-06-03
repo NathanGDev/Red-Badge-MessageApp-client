@@ -45,13 +45,16 @@ class App extends React.Component<any , TokenState> {
     super(props);
     this.state = {
       sessionToken: null,
+      userType: null,
     };
   }
 
-  updateToken = (newToken: any) => {
+  updateToken = (newToken: any, newUserType: any) => {
     localStorage.setItem("token", newToken);
     this.setState({ sessionToken: newToken });
     console.log("updateToken -> newToken", newToken);
+    // Update usertype state variable.
+    this.setState({ userType: newUserType });
   };
 
   clearToken = () => {
@@ -61,20 +64,22 @@ class App extends React.Component<any , TokenState> {
 
   sessionToken!: any;
   
+  
   protectedViews = () => {
     // return (this.sessionToken === localStorage.getItem('token') ? 
     console.log('sessionToken = ' + this.sessionToken);
     return (
       localStorage.getItem('token') ? 
+      // <ContactIndex token={this.sessionToken}/>
       <ContactIndex token={this.sessionToken}/>
       : <Auth updateToken={this.updateToken} />)
   }
 
-
   render() {
     return (
       <div>
-        <NavBar clearToken={this.clearToken}/>
+        <NavBar clearToken={this.clearToken} userType={this.userType}/>
+        {/* <NavBar /> */}
         {this.protectedViews()}
       </div>
       // <Router>

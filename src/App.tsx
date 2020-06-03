@@ -30,14 +30,20 @@ type TokenState = {
   sessionToken?: any;
 };
 
-class App extends React.Component<TokenState, TokenState> {
-  constructor(props: any) {
+interface clearTokenHelper {
+  clearToken: () => any;
+}
+
+// class App extends React.Component<TokenState , TokenState> {
+class App extends React.Component<any , TokenState> {
+    constructor(props: any) {
     super(props);
     this.state = {
       sessionToken: null,
     };
   }
 
+<<<<<<< HEAD
   componentDidMount() {
     if (localStorage.getItem("token")) {
       this.setState(() => {
@@ -46,6 +52,8 @@ class App extends React.Component<TokenState, TokenState> {
     }
   }
 
+=======
+>>>>>>> 529503cabfc34113de4d97c9a83a5c9476037dc7
   updateToken = (newToken: any) => {
     localStorage.setItem("token", newToken);
     this.setState({ sessionToken: newToken });
@@ -60,6 +68,7 @@ class App extends React.Component<TokenState, TokenState> {
   sessionToken!: any;
 
   protectedViews = () => {
+<<<<<<< HEAD
     return this.sessionToken === localStorage.getItem("token") ? (
       <ContactIndex token={this.sessionToken} />
     ) : (
@@ -109,6 +118,44 @@ class App extends React.Component<TokenState, TokenState> {
           </Route>
         </Switch>
       </Router>
+=======
+    // return (this.sessionToken === localStorage.getItem('token') ? 
+    console.log('sessionToken = ' + this.sessionToken);
+    return (
+      localStorage.getItem('token') ? 
+      <ContactIndex token={this.sessionToken}/>
+      : <Auth updateToken={this.updateToken} />)
+  }
+
+
+  render() {
+    return (
+      <div>
+        <NavBar clearToken={this.clearToken}/>
+        {this.protectedViews()}
+      </div>
+      // <Router>
+      //   <Switch>
+      //     this.sessionToken === localStorage.getItem('token') ?
+      //     <Route exact path="/contact">
+      //       <ContactIndex token={this.sessionToken} />
+      //     </Route>
+      //     <Route exact path="/user">
+      //       <UserIndex token={this.sessionToken} />
+      //     </Route>
+      //     <Route exact path="/usertype">
+      //       <UserTypeIndex token={this.sessionToken} />
+      //     </Route>
+      //     :
+      //     <Route path="/signup">
+      //       <Signup updateToken={this.updateToken} />
+      //     </Route>
+      //     <Route exact path="/login">
+      //       <Login updateToken={this.updateToken} />
+      //     </Route>
+      //     </Switch>}
+      // </Router>
+>>>>>>> 529503cabfc34113de4d97c9a83a5c9476037dc7
     );
   }
 }

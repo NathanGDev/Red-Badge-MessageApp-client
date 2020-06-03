@@ -1,3 +1,4 @@
+import withRoot from '../styling/withRoot';
 import React from 'react';
 import { withStyles, Theme, createStyles, makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -86,5 +87,4 @@ const contactMapper = () => {
     // </AppForm>
   );
 };
-export default ContactTable;
-
+export default withRoot(ContactTable);

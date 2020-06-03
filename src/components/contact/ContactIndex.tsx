@@ -46,7 +46,7 @@ const ContactIndex = (props: any) => {
 
     return (
         <Container>
-            <NavBar />
+            {/* <NavBar /> */}
             <ContactCreate fetchContacts={fetchContacts} token={props.token}/>
             <ContactTable contacts={contacts} editUpdateContact={editUpdateContact}
                 updateOn={updateOn} fetchContacts={fetchContacts} token={props.token} />

@@ -1,21 +1,20 @@
 import React from "react";
+import withRoot from "./components/styling/withRoot";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Redirect,
 } from "react-router-dom";
 // import "./App.css";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Auth from "./components/Auth";
+// import Navigations from "./components/Navigations";
 import NavBar from "./components/NavBar";
 import ContactIndex from "././components/contact/ContactIndex";
 import UserIndex from "././components/user/UserIndex";
 import UserTypeIndex from "././components/userType/UserTypeIndex";
 
-// import ContactCreate from "././components/contact/ContactCreate";
-// import ContactTable from "././components/contact/ContactTable";
 
 enum UserRoles {
   admin = "admin",
@@ -48,9 +47,9 @@ const App: React.FunctionComponent = () => {
 
   return (
     <Router>
-      {/* <div className="App">
-        <NavBar updateToken={updateToken} />
-      </div> */}
+      <div className="App">
+        <NavBar />
+      </div>
       <Switch>
         <Route exact path="/signup">
           <Auth updateToken={updateToken} />
@@ -72,6 +71,4 @@ const App: React.FunctionComponent = () => {
     </Router>
   );
 };
-
-export default App;
-
+export default withRoot(App);

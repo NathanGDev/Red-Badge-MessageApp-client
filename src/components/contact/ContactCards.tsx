@@ -53,4 +53,3 @@ const contactMapper = () => {
   );
 };
 export default ContactCards;
-

@@ -1,12 +1,43 @@
 import withRoot from '../styling/withRoot';
 import React, { useState } from "react";
 import { makeStyles } from '@material-ui/core/styles';
+<<<<<<< HEAD
+=======
 import { Form, FormGroup, Label, Input, Button } from "reactstrap";
+>>>>>>> c8a4a63265a23410ba70fdb829cd2c84f79bbf00
 import Grid, { GridSpacing } from '@material-ui/core/Grid';
 import Typography from '../styling/Typography';
 import AppForm from '../styling/AppForm';
 import FormButton from '../styling/FormButton';
 import TextField from '@material-ui/core/TextField';
+<<<<<<< HEAD
+// import { Form, FormGroup, Label, Input, Button } from "reactstrap";
+// import APIURL from "../helpers/environment";
+
+
+const useStyles = makeStyles((theme) => ({
+    form: {
+        marginTop: theme.spacing(6),
+    },
+    button: {
+        marginTop: theme.spacing(3),
+        marginBottom: theme.spacing(2),
+    },
+    feedback: {
+        marginTop: theme.spacing(2),
+    },
+    root: {
+        '& .MuiTextField-root': {
+            margin: theme.spacing(1),
+            width: '25ch',
+            //   width: 200,
+            display: 'flex',
+            alignItems: 'center',
+            textAlign: 'center'
+        },
+    },
+}))
+=======
 // import APIURL from "../helpers/environment";
 
 const useStyles = makeStyles((theme) => ({
@@ -30,6 +61,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   }))
+>>>>>>> c8a4a63265a23410ba70fdb829cd2c84f79bbf00
 
 const ContactCreate = (props: any) => {
     const classes = useStyles();
@@ -59,6 +91,17 @@ const ContactCreate = (props: any) => {
                 'Authorization': props.token
             }),
         }).then((response) => response.json())
+<<<<<<< HEAD
+            .then((contactData) => {
+                console.log(contactData);
+                setFirstName('');
+                setLastName('');
+                setMobileNum('');
+                setFbMsgrId('');
+                // setUserId('');
+                props.fetchContacts();
+            });
+=======
         .then((contactData) => {
             console.log(contactData);
             setFirstName('');
@@ -68,12 +111,92 @@ const ContactCreate = (props: any) => {
             // setUserId('');
             props.fetchContacts();
         });
+>>>>>>> c8a4a63265a23410ba70fdb829cd2c84f79bbf00
     };
 
     return (
         <React.Fragment>
             <AppForm>
 
+<<<<<<< HEAD
+                <React.Fragment>
+                    <Typography variant="h5">Add Contact</Typography>
+                </React.Fragment>
+
+                <form onSubmit={handleSubmit}>
+
+                    <Grid container spacing={2}>
+                        <Grid item xs>
+                            <TextField
+                                label="First Name"
+                                defaultValue="firstName"
+                                onChange={(e: any) => setFirstName(e.target.value)}
+                                value={firstName}
+                                fullWidth
+                                required={true}
+                                name="firstname"
+                                margin="normal"
+                                variant="outlined"
+                                rowsMax={2}
+                            ></TextField>
+                        </Grid>
+
+                        <Grid item xs>
+                            <TextField
+                                label="Last Name"
+                                defaultValue="lastName"
+                                onChange={(e: any) => setLastName(e.target.value)}
+                                value={lastName}
+                                fullWidth
+                                required={true}
+                                name="lastname"
+                                margin="normal"
+                                variant="outlined"
+                                rowsMax={2}
+                            ></TextField>
+                        </Grid>
+                        
+                    </Grid>
+
+                    <Grid container spacing={2}>
+
+                        <Grid item xs>
+                            <TextField
+                                label="Mobile Number"
+                                defaultValue="mobileNum"
+                                onChange={(e: any) => setMobileNum(e.target.value)}
+                                value={mobileNum}
+                                fullWidth
+                                required={true}
+                                name="mobileNum"
+                                margin="normal"
+                                variant="outlined"
+                                rowsMax={2}
+                            ></TextField>
+                        </Grid>
+
+                        <Grid item xs>
+                            <TextField
+                                label="FB Msgr Id"
+                                defaultValue="fbMsgrId"
+                                onChange={(e: any) => setFbMsgrId(e.target.value)}
+                                value={fbMsgrId}
+                                fullWidth
+                                required={true}
+                                name="fbMsgrId"
+                                margin="normal"
+                                variant="outlined"
+                                rowsMax={2}
+                            ></TextField>
+                        </Grid>
+
+                    </Grid>
+                    <Grid container spacing={10} align="center"> {/*commented out lines 10-13 in OverridableComponent.d.ts, 1st section after imports*/}
+                    <Grid item xs>
+                    <FormButton type="submit" color="secondary">Add Contact</FormButton>
+                    </Grid>
+                    </Grid>
+=======
             <React.Fragment>
             <Typography variant="h5">Add Contact</Typography>
             </React.Fragment>
@@ -140,6 +263,7 @@ const ContactCreate = (props: any) => {
                 <FormButton type="submit" color="secondary" fullWidth>Add Contact</FormButton>
                 </Grid>
                 </Grid>
+>>>>>>> c8a4a63265a23410ba70fdb829cd2c84f79bbf00
                 </form>
             </AppForm>
         </React.Fragment>

@@ -36,6 +36,10 @@ image: {
 },
 }))
 
+interface contactUpdateHelper {
+  contactUpdate(event: React.FormEvent<HTMLInputElement>): void;
+}
+
 const ContactEdit = (props: any) => {
   const [editFirstName, setEditFirstName] = useState(props.contactToUpdate.firstName);
   const [editLastName, setEditLastName] = useState(props.contactToUpdate.lastName);
@@ -46,12 +50,12 @@ const ContactEdit = (props: any) => {
 
   // const handleClose = (event: any, reason: any) => {
   //   if (reason === 'clickaway') {
-  //     return;
+  //     return;  
   //   }
   // };
 
   const contactUpdate = (event: any, contact: any) => {
-    event.preventDefault();
+      event?.preventDefault();
     fetch(`http://localhost:3001/contact/${props.contactToUpdate.id}`, {
       method: 'PUT',
       body: JSON.stringify({
@@ -76,7 +80,9 @@ const ContactEdit = (props: any) => {
       <AppForm>
       {/* <ModalHeader>Edit Contact</ModalHeader> */}
       <ModalBody>
-        <form onSubmit={contactUpdate}> {/*changed onSubmit type in index.d.ts to any*/}
+        <form onSubmit={contactUpdate}> 
+        {/*changed onSubmit type in index.d.ts to any*/}
+        {/* <form onSubmit={props.contactUpdate}> */}
           {/* <form> */}
           <Grid container spacing={2}>
                         <Grid item xs>

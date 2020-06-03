@@ -1,12 +1,9 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 //import "./App.css";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
+import Home from "./components/Home";
 import Auth from "./components/Auth";
 // import Navigations from "./components/Navigations";
 import NavBar from "./components/NavBar";
@@ -34,22 +31,25 @@ type TokenState = {
   sessionToken?: any;
 };
 
-interface clearTokenHelper {
-  clearToken: () => any;
-}
-
-// class App extends React.Component<TokenState , TokenState> {
-class App extends React.Component<any , TokenState> {
-    constructor(props: any) {
+class App extends React.Component<TokenState, TokenState> {
+  constructor(props: any) {
     super(props);
     this.state = {
       sessionToken: null,
     };
   }
 
+  componentDidMount() {
+    if (localStorage.getItem("token")) {
+      this.setState(() => {
+        localStorage.getItem("token");
+      });
+    }
+  }
+
   updateToken = (newToken: any) => {
     localStorage.setItem("token", newToken);
-    // setSessionToken(newToken);
+    this.setState({ sessionToken: newToken });
     console.log("updateToken -> newToken", newToken);
   };
 
@@ -59,23 +59,55 @@ class App extends React.Component<any , TokenState> {
   };
 
   sessionToken!: any;
-  
+
   protectedViews = () => {
-    // return (this.sessionToken === localStorage.getItem('token') ? 
-    console.log('sessionToken = ' + this.sessionToken);
-    return (
-      localStorage.getItem('token') ? 
-      <ContactIndex token={this.sessionToken}/>
+    return (this.sessionToken === localStorage.getItem('token') ? <ContactIndex token={this.sessionToken} />
       : <Auth updateToken={this.updateToken} />)
   }
+
+  // protectedViews = () => {
+  //   return this.sessionToken === localStorage.getItem("token") ? (
+  //     <Home token={this.updateToken}/>
+  //   ) : (
+  //     <Login updateToken={this.updateToken} />
+  //   );
+  // };
 
 
   render() {
     return (
-      <div>
-        {/* <NavBar clearToken={this.clearToken}/> */}
-        {this.protectedViews()}
-     </div>
+      <Router>
+        {/* <div className="App">
+          <Navigations
+            updateToken={this.updateToken}
+            clearToken={this.clearToken}
+          />
+        </div> */}
+        <Switch>
+          {/* <Route exact path="/signin">
+            <Login updateToken={this.updateToken} />
+          </Route> */}
+          <Route path="/signup">
+            <Signup updateToken={this.updateToken} />
+          </Route>
+          {/* <Route exact path="/home">
+            <Home />
+          </Route> */}
+          <Route exact path="/login">
+            <Login updateToken={this.updateToken} />
+          </Route>
+          <Route exact path="/contact">
+            <ContactIndex token={this.sessionToken} />
+          </Route>
+          <Route exact path="/user">
+            <UserIndex token={this.sessionToken} />
+          </Route>
+          <Route exact path="/usertype">
+            <UserTypeIndex token={this.sessionToken} />
+          </Route>
+          {this.protectedViews()}
+        </Switch>
+      </Router>
     );
   }
 }

@@ -1,8 +1,8 @@
 import React from "react";
-import MessageList from "./messages/MessageList";
+//import MessageList from "./messages/MessageList";
 import MessageForm from "./messages/MessageForm";
 import "./Home.css";
-import Message from "./messages/Message";
+//import Message from "./messages/Message";
 import "../.env"
 
 // type MessageSender = {
@@ -10,7 +10,7 @@ import "../.env"
 // };
 
 interface MessageSender {
- clearToken: any;
+  clearToken: any;
 }
 //
 // type Messages = {
@@ -19,12 +19,20 @@ interface MessageSender {
 //   body: string;
 // };
 
-class Home extends React.Component<any, {messages: any}> {
+class Home extends React.Component<any, { messages: any }> {
   constructor(props: any) {
     super(props);
     this.state = {
       messages: [],
     };
+  }
+
+  componentDidMount() {
+    fetch('http://localhost:3000/', {
+      method: 'POST',
+      headers: new Headers({}),
+      body: JSON.stringify({ message:}),
+    })
   }
 
   handleNewMessage = (text: any) => {
@@ -47,7 +55,7 @@ class Home extends React.Component<any, {messages: any}> {
     this.setState({
       messages: [
         ...this.state.messages,
-        { me: true, author: "Me", body: text },
+        { me: true, author: "kaelon", body: text },
       ],
     });
 
@@ -57,7 +65,7 @@ class Home extends React.Component<any, {messages: any}> {
       <div className="chatBox-main">
         <h1 className="home-h1">Home page</h1>
         <div className="chatBox">
-          <MessageList messages={this.state.messages} />
+          {/* //<MessageList messages={this.state.messages} /> */}
           <MessageForm onMessageSend={this.handleNewMessage} />
         </div>
       </div>

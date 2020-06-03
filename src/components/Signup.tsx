@@ -130,9 +130,9 @@ const Signup = (props: any) => {
               variant="outlined"
               rowsMax={2}
             ></TextField>
-            <FormButton type="submit" color="secondary">Sign Up</FormButton>
-            <div><a href="/login">Already have an account?</a></div>
-          </form>
+
+<FormButton type="submit" color="secondary">Sign Up</FormButton>
+                </form>
       </AppForm>
     </React.Fragment>
   );

@@ -9,7 +9,7 @@ import Message from "./messages/Message";
 // };
 
 interface MessageSender {
- clearToken: any;
+  clearToken: any;
 }
 //
 // type Messages = {
@@ -18,7 +18,7 @@ interface MessageSender {
 //   body: string;
 // };
 
-class Home extends React.Component<any, {messages: any}> {
+class Home extends React.Component<any, { messages: any }> {
   constructor(props: any) {
     super(props);
     this.state = {
@@ -26,11 +26,19 @@ class Home extends React.Component<any, {messages: any}> {
     };
   }
 
+  componentDidMount() {
+    fetch('http://localhost:3000/', {
+      method: 'POST',
+      headers: new Headers({}),
+      body: JSON.stringify({ message:}),
+    })
+  }
+
   handleNewMessage = (text: any) => {
     this.setState({
       messages: [
         ...this.state.messages,
-        { me: true, author: "Me", body: text },
+        { me: true, author: "kaelon", body: text },
       ],
     });
   };

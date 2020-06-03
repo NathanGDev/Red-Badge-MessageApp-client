@@ -1,32 +1,26 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Home from "./components/Home";
-import Auth from "./components/Auth";
 import Navigations from "./components/Navigations";
 
-
-enum UserRoles {
-  admin = "admin",
-  user = "user",
-  assistant = "assistant",
-}
-const userRoles = {
-  admins: [String(UserRoles.admin)],
-  users: [String(UserRoles.user)],
-  assistant: [String(UserRoles.assistant)],
-  all: [
-    String(UserRoles.admin),
-    String(UserRoles.user),
-    String(UserRoles.assistant),
-  ],
-};
+// enum UserRoles {
+//   admin = "admin",
+//   user = "user",
+//   assistant = "assistant",
+// }
+// const userRoles = {
+//   admins: [String(UserRoles.admin)],
+//   users: [String(UserRoles.user)],
+//   assistant: [String(UserRoles.assistant)],
+//   all: [
+//     String(UserRoles.admin),
+//     String(UserRoles.user),
+//     String(UserRoles.assistant),
+//   ],
+// };
 type TokenState = {
   sessionToken?: any;
 };
@@ -39,13 +33,13 @@ class App extends React.Component<TokenState, TokenState> {
     };
   }
 
-  // componentDidMount() {
-  //   if (localStorage.getItem("token")) {
-  //     this.setState(() => {
-  //       localStorage.getItem("token");
-  //     });
-  //   }
-  // }
+  componentDidMount() {
+    if (localStorage.getItem("token")) {
+      this.setState(() => {
+        localStorage.getItem("token");
+      });
+    }
+  }
 
   updateToken = (newToken: any) => {
     localStorage.setItem("token", newToken);
@@ -57,13 +51,17 @@ class App extends React.Component<TokenState, TokenState> {
     localStorage.clear();
     this.setState(null);
   };
+
+
   sessionToken!: any;
+
+
   protectedViews = () => {
     return this.sessionToken === localStorage.getItem("token") ? (
-      <Home token={this.updateToken}/>
+      <Home token={this.updateToken} />
     ) : (
-      <Login updateToken={this.updateToken} />
-    );
+        <Login updateToken={this.updateToken} />
+      );
   };
   render() {
     return (
@@ -84,7 +82,7 @@ class App extends React.Component<TokenState, TokenState> {
           <Route exact path="/home">
             <Home />
           </Route>
-        {this.protectedViews()}
+          {this.protectedViews()}
         </Switch>
       </Router>
     );

@@ -46,9 +46,14 @@ interface clearTokenHelper {
   clearToken: (event: React.MouseEvent<HTMLButtonElement>) => any;
 }
 
+// Props
+//    classes   (obj)
+//    clearToken (func)
+//    
+
 function NavBar(props: any) {
   const { classes } = props;
-  // const { clearToken } = props;
+  const { clearToken } = props;
 
   // const [contacts, setContacts] = useState([]);
   // const [users, setContacts] = useState([]);
@@ -139,10 +144,7 @@ function NavBar(props: any) {
             User Types
             </Link>
         </MenuItem>
-        {/* : null } */}
-
-        {/* <MenuItem onClick={handleLogOut}> */}
-        <MenuItem>
+        <MenuItem onClick={handleClose}>
             <Link
             color="inherit"
             underline="none"

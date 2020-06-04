@@ -5,27 +5,15 @@ import "./Home.css";
 import Message from "./messages/Message";
 import "../.env";
 
-interface MessageSender {
-  clearToken: any;
-}
-
-class Home extends React.Component<any, { messages: any }> {
-  constructor(props: any) {
+class Home extends React.Component {
+  constructor(props) {
     super(props);
     this.state = {
       messages: [],
     };
   }
 
-  // componentDidMount() {
-  //   fetch('http://localhost:3000/', {
-  //     method: 'POST',
-  //     headers: new Headers({}),
-  //     body: JSON.stringify({ message:}),
-  //   })
-  // }
-
-  handleNewMessage = (text: any) => {
+  handleNewMessage = (text) => {
     // Send an SMS using Twilio
     // const accountSid = process.env.TWILIO_ACCOUNT_SID;
     // const authToken = process.env.TWILIO_AUTH_TOKEN;
@@ -36,7 +24,6 @@ class Home extends React.Component<any, { messages: any }> {
 
     client.messages.create({
       body: text,
-      // from: process.env.TWILIO_SMS_NUM, // Twillio Number
       from: "+13175763401", // Twillio Number
       to: "+12602554797",
     });
@@ -49,6 +36,7 @@ class Home extends React.Component<any, { messages: any }> {
     });
   };
   render() {
+    console.log(this.props.contact);
     return (
       <div className="chatBox-main">
         <h1 className="home-h1">Home page</h1>

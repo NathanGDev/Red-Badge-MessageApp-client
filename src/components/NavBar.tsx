@@ -59,7 +59,7 @@ function NavBar(props: any) {
 //   const [sessionToken, setSessionToken] = useState('');
   const open = Boolean(anchorEl);
 
-  const handleClick = (event: any) => {
+  const handleClick = (event: { currentTarget: React.SetStateAction<null>; }) => {
     setAnchorEl(event.currentTarget);
   };
 

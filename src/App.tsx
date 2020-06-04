@@ -14,7 +14,7 @@ import NavBar from "./components/NavBar";
 import ContactIndex from "././components/contact/ContactIndex";
 import UserIndex from "././components/user/UserIndex";
 import UserTypeIndex from "././components/userType/UserTypeIndex";
-
+import AppBar from "./components/AppBar";
 
 enum UserRoles {
   admin = "admin",
@@ -48,7 +48,7 @@ const App: React.FunctionComponent = () => {
   return (
     <Router>
       <div className="App">
-        <NavBar />
+        <AppBar />
       </div>
       <Switch>
         <Route exact path="/signup">

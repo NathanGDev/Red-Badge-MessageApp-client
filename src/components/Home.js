@@ -19,8 +19,10 @@ class Home extends React.Component {
     // const authToken = process.env.TWILIO_AUTH_TOKEN;
 
     const accountSid = "REMOVED_SID";
-    const authToken = "875a926342f6c803aa5a0d59b7d85274";
+    const authToken = "REMOVED_TOKEN";
     const client = require("twilio")(accountSid, authToken);
+
+    console.log('&&&&&&& In Home.js &&&&&&&')
 
     client.messages.create({
       body: text,

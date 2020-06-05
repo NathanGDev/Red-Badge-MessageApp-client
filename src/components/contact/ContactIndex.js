@@ -4,7 +4,6 @@ import { Container, Row, Col } from "reactstrap";
 import ContactCreate from "./ContactCreate";
 import ContactEdit from "./ContactEdit";
 import ContactTable from "./ContactTable";
-import NavBar from "../NavBar";
 // import APIURL from '../../helpers/environment';
 
 const ContactIndex = (props) => {

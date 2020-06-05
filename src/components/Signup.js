@@ -1,4 +1,4 @@
-// import withRoot from '././styling/withRoot';
+import withRoot from '././styling/withRoot';
 import React, { useState } from "react";
 import { Form, FormGroup, Label, Input, Button } from "reactstrap";
 import { makeStyles } from "@material-ui/core/styles";
@@ -35,12 +35,10 @@ const Signup = (props) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [mobileNum, setMobileNum] = useState("");
-
   const { updateToken } = props;
   const { updateSalesPersonId } = props;
   const { toggle } = props;
   const { updateUserType } = props;
-
   let handleSubmit = (event) => {
     event.preventDefault();
     fetch(`http://localhost:3000/signin/create`, {
@@ -63,9 +61,7 @@ const Signup = (props) => {
       .then((data) => {
         updateToken(data.sessionToken);
         console.log("==================" + JSON.stringify(data));
-        
         updateUserType("Salesperson");
-
         fetch(`http://localhost:3000/user/ ${data.user.id}`, {
           method: "PUT",
           body: JSON.stringify({
@@ -90,14 +86,13 @@ const Signup = (props) => {
           });
       });
   };
-
   return (
     <React.Fragment>
       <AppForm>
         <React.Fragment>
-          <Typography variant="h3">Sign Up</Typography>
+          <Typography variant="h5" align="center">Sign Up</Typography>
         </React.Fragment>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} align="center">
           <TextField
             label="First Name"
             defaultValue="firstName"
@@ -159,14 +154,19 @@ const Signup = (props) => {
             variant="outlined"
             rowsMax={2}
           ></TextField>
-          <FormButton type="submit" color="secondary">
+          <FormButton 
+          type="submit" 
+          color="secondary" 
+          value="login"
+            // fullWidth
+            align="center">
             Sign Up
           </FormButton>
           {/* <div>
             <a href="/login">Already have an account?</a>
           </div> */}
           <div>
-            <Link href="/signin" onClick={toggle}>
+            <Link href="/signin" alignItems="center" onClick={toggle}>
               Already have an account?
             </Link>
           </div>
@@ -175,4 +175,4 @@ const Signup = (props) => {
     </React.Fragment>
   );
 };
-export default Signup;
+export default withRoot(Signup);

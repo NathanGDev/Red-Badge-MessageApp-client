@@ -8,15 +8,11 @@ import {
 import "./App.css";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
-import Home from "./components/Home";
 import Auth from "./components/Auth";
-// import Navigations from "./components/Navigations";
 import NavBar from "./components/NavBar";
 import ContactIndex from "./components/contact/ContactIndex";
 import UserIndex from "./components/user/UserIndex";
 import UserTypeIndex from "./components/userType/UserTypeIndex";
-import history from "./components/history";
-import { string } from "prop-types";
 
 // class App extends React.Component<TokenState , TokenState> {
 const App = () => {

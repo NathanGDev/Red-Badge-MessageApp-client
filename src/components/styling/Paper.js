@@ -5,7 +5,7 @@ import MuiPaper from '@material-ui/core/Paper';
 import { capitalize } from '@material-ui/core/utils';
 import { withStyles } from '@material-ui/core/styles';
 
-const styles = (theme: any) => ({
+const styles = (theme) => ({
   backgroundLight: {
     backgroundColor: theme.palette.secondary.light,
   },
@@ -20,7 +20,7 @@ const styles = (theme: any) => ({
   // },
 });
 
-function Paper(props: any) {
+function Paper(props) {
   const { background = 'light', classes, className, padding = false, ...other } = props;
   return (
     <MuiPaper

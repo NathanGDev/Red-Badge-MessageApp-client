@@ -1,11 +1,20 @@
 import withRoot from "../styling/withRoot";
 import React, { useState } from "react";
-import { Modal, ModalBody } from "reactstrap";
+// import { Modal, ModalBody } from "reactstrap";
 import { makeStyles } from "@material-ui/core/styles";
-import Grid, { GridSpacing } from "@material-ui/core/Grid";
+import Grid from "@material-ui/core/Grid";
 import AppForm from "../styling/AppForm";
 import FormButton from "../styling/FormButton";
 import TextField from "@material-ui/core/TextField";
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import Select from '@material-ui/core/Select';
+import InputLabel from '@material-ui/core/InputLabel';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
 // import APIURL from '../../helpers/environment';
 
 const useStyles = makeStyles((theme) => ({
@@ -53,6 +62,18 @@ const ContactEdit = (props) => {
   );
   const [editId, setEditId] = useState(props.contactToUpdate.id);
 
+  const [open, setOpen] = useState(true);
+
+  // const handleClose = () => {
+  //   setOpen(false);
+  // };
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+  };
+
   const contactUpdate = (event, contact) => {
     event.preventDefault();
     console.log("============================" + props.contactToUpdate.id);
@@ -77,9 +98,14 @@ const ContactEdit = (props) => {
     });
   };
   return (
-    <Modal isOpen={true}>
+    <div>
+    {/* <Modal isOpen={true}> */}
+    {/* <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title"> */}
+    <Dialog open={open} aria-labelledby="form-dialog-title">
+    <DialogTitle id="form-dialog-title">Edit Contact</DialogTitle>
+    <DialogContent>
       <AppForm>
-        <ModalBody>
+        {/* <ModalBody> */}
           <form onSubmit={contactUpdate}>
             {" "}
             <Grid container spacing={2}>
@@ -144,17 +170,18 @@ const ContactEdit = (props) => {
                 ></TextField>
               </Grid>
             </Grid>
-            <Grid container spacing={10}>
-              <Grid item xs>
-                <FormButton type="submit" color="secondary">
+           
+                <FormButton type="submit" color="secondary" align="center">
                   Update Contact
                 </FormButton>
-              </Grid>
-            </Grid>
+              <Typography variant="body2" align="center">
+        <Button type="submit" align="center" onClick={handleClose}>Cancel</Button>
+    </Typography>
           </form>
-        </ModalBody>
       </AppForm>
-    </Modal>
+    </DialogContent>
+    </Dialog>
+    </div>
   );
 };
 

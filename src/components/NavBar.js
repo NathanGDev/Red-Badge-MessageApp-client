@@ -11,7 +11,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import MenuIcon from "@material-ui/icons/Menu";
 import Login from "./Login";
 import Signup from "./Signup";
-import Home from "./Home";
+import MessageIndex from "./messages/MessageIndex";
 import UserIndex from "./user/UserIndex";
 import ContactIndex from "./contact/ContactIndex";
 import UserTypeIndex from "./userType/UserTypeIndex";
@@ -93,7 +93,7 @@ function NavBar(props) {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
               >
-                {userType != "Assist-send" && userType != "Assist-view" ? (
+                {/* {userType != "Assist-send" && userType != "Assist-view" ? (
                   <MenuItem onClick={handleClose}>
                     <Link
                       color="inherit"
@@ -104,8 +104,8 @@ function NavBar(props) {
                       Home
                     </Link>
                   </MenuItem>
-                ) : null}
-                {userType != "Admin" && userType != "Assist-view" ? (
+                ) : null} */}
+                {userType != "Admin" ? (
                   <MenuItem onClick={handleClose}>
                     <Link
                       color="inherit"
@@ -117,7 +117,7 @@ function NavBar(props) {
                     </Link>
                   </MenuItem>
                 ) : null}
-                {userType != "Assist-send" && userType != "Assist-view" ? (
+                {userType == "Salesperson" ? (
                   <MenuItem onClick={handleClose}>
                     <Link
                       color="inherit"
@@ -170,14 +170,14 @@ function NavBar(props) {
       <div className="switch">
         {localStorage.getItem("token") ? (
           <Switch>
+            <Route path="/contact">
+              <ContactIndex contactSet={setContact} token={token} />
+            </Route>
             <Route path="/home">
-              <Home contact={contact} token={token} />
+              <MessageIndex contact={contact} token={token} />
             </Route>
             <Route path="/login">
               <Login token={token} />
-            </Route>
-            <Route path="/contact">
-              <ContactIndex contactSet={setContact} token={token} />
             </Route>
             <Route path="/usertype">
               <UserTypeIndex token={token} />

@@ -71,7 +71,7 @@ const ContactCreate = (props) => {
     <React.Fragment>
       <AppForm>
         <React.Fragment>
-          <Typography variant="h5">Add Contact</Typography>
+          <Typography variant="h5" align="center">Add Contact</Typography>
         </React.Fragment>
 
         <form onSubmit={handleSubmit}>
@@ -138,7 +138,7 @@ const ContactCreate = (props) => {
               ></TextField>
             </Grid>
           </Grid>
-          <Grid container spacing={10}>
+          <Grid container spacing={10} align="center">
             <Grid item xs>
               <FormButton type="submit" color="secondary">
                 Add Contact

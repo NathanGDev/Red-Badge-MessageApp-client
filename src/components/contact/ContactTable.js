@@ -12,15 +12,23 @@ import Button from "@material-ui/core/Button";
 import DeleteIcon from "@material-ui/icons/Delete";
 import UpdateIcon from "@material-ui/icons/Update";
 import SmsIcon from "@material-ui/icons/Sms";
+import Tooltip from '@material-ui/core/Tooltip';
+// import APIURL from '../../helpers/environment';
 
 const useStyles = makeStyles({
   table: {
-    minWidth: 650,
+    minWidth: 400,
+  },
+  tableCell: {
+   maxWidth: 50, 
   },
 });
 
+
 const ContactTable = (props) => {
   const { contactSet } = props;
+  const classes = useStyles();
+
 
   const deleteContact = (contact) => {
     fetch(`http://localhost:3000/contact/${contact.id}`, {
@@ -35,23 +43,32 @@ const ContactTable = (props) => {
   const contactMapper = () => {
     return props.contacts.map((contact, index) => {
       return (
-        <Table>
-          <TableHead>
-            <TableRow key={index}>
-              <TableCell>{contact.id}</TableCell>
-              <TableCell>{contact.firstName}</TableCell>
-              <TableCell>{contact.lastName}</TableCell>
-              <TableCell>{contact.mobileNum}</TableCell>
-              <TableCell>{contact.fbMsgrId}</TableCell>
+        // <TableContainer>
+        // <Table className={classes.table}>
+          // <TableBody>
+            <TableRow key={contact.id}> {/*works w index*/}
+              {/* <TableCell>{contact.id}</TableCell> */}
+              <TableCell className={classes.tableCell} component="th" scope="row" align="left">{contact.firstName}</TableCell>
+              <TableCell align="left">{contact.lastName}</TableCell>
+              <TableCell align="left">{contact.mobileNum}</TableCell>
+              <TableCell align="left">{contact.fbMsgrId}</TableCell>
+
+              <TableCell align="left">
               <Link to="/home">
-                <IconButton
+                <Tooltip title="Text Message">
+                <Button
                   onClick={() => {
                     contactSet(contact);
                   }}
                 >
                   <SmsIcon />
-                </IconButton>
+                </Button>
+                </Tooltip>
               </Link>
+              </TableCell>
+
+              <TableCell align="left">
+              <Tooltip title="Edit">
               <Button
                 onClick={() => {
                   props.editUpdateContact(contact);
@@ -60,6 +77,11 @@ const ContactTable = (props) => {
               >
                 <UpdateIcon />
               </Button>
+              </Tooltip>
+              </TableCell>
+
+              <TableCell align="left">
+              <Tooltip title="Delete">
               <Button
                 onClick={() => {
                   deleteContact(contact);
@@ -67,9 +89,12 @@ const ContactTable = (props) => {
               >
                 <DeleteIcon />
               </Button>
+              </Tooltip>
+              </TableCell>
             </TableRow>
-          </TableHead>
-        </Table>
+          // </TableBody>
+        // </Table>
+        // </TableContainer>
       );
     });
   };
@@ -77,17 +102,23 @@ const ContactTable = (props) => {
   return (
     <TableContainer>
       <Table>
-        <TableHead>
+       <TableHead>
           <TableRow>
-            <TableCell>#</TableCell>
-            <TableCell>First Name</TableCell>
-            <TableCell>Last Name</TableCell>
-            <TableCell>Mobile</TableCell>
-            <TableCell>FB Msgr</TableCell>
+            {/* <TableCell>#</TableCell> */}
+            <TableCell align="left">First Name</TableCell>
+            <TableCell align="left">Last Name</TableCell>
+            <TableCell align="left">Mobile</TableCell>
+            <TableCell align="left">FB Msgr</TableCell>
+            <TableCell align="left">Text Msg</TableCell>
+            <TableCell align="left">Edit</TableCell>
+            <TableCell align="left">Delete</TableCell>
+
           </TableRow>
         </TableHead>
-        <TableBody>{contactMapper()}</TableBody>
-      </Table>
+        <TableBody>
+          {contactMapper()}
+          </TableBody>
+     </Table>
     </TableContainer>
   );
 };

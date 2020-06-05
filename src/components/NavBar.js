@@ -60,6 +60,8 @@ function NavBar(props) {
 
   const open = Boolean(anchorEl);
 
+  console.log('!!!!!! ' + userType);
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -160,8 +162,6 @@ function NavBar(props) {
             underline="none"
             style={{ textDecoration: "none" }}
             className={classes.title}
-            // WHAT IS THIS?!@#!#!#@!#!@#!@#!@#!@#@!
-            // href="https://cmc-blue-lootlog-client.herokuapp.com"
           >
             {"MessageMatic"}
           </Linkk>

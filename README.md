@@ -1,3 +1,27 @@
+Introduction
+
+MessageMatic is a messaging app that crosses messaging platforms and makes communication between salespeople, clients, admins and assistants easier and faster. It was created as a student project for ElevenFifty Academy and is not intended for production use. No animals were harmed in the making of this app.
+
+packages installed
+-Download the Windows Installer directly from the nodejs.org web site.
+-brew install node(Mac)
+-npm install twilio-cli -g
+-npx create-react-app
+-npm install typescript
+-npm install @material-ui/core
+
+
+
+run server
+-nodemon
+
+run client
+-npm start
+
+This project was created by Chris W, Chelsea C, Nathan G and Adam A.
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

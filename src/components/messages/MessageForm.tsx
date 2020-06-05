@@ -18,7 +18,7 @@ type MessageState = {
 
 // class MessageForm extends Component<MessageFormInput, MessageState> {
 class MessageForm extends Component<any, MessageState> {
-    static propTypes = {
+  static propTypes = {
     onMessageSend: PropTypes.func.isRequired,
   };
 
@@ -63,12 +63,12 @@ class MessageForm extends Component<any, MessageState> {
     });
   };
 
- handleFormSubmit = (event: any) => {
+  handleFormSubmit = (event: any) => {
     event.preventDefault();
     console.log("==========WE'RE IN HANDLE SUBMIT===========");
     console.log("contactId = " + this.contactId);
-    console.log("contactMobileNum = " + this.contactMobileNum); 
-    console.log("this.state.message = " + this.state.message);   
+    console.log("contactMobileNum = " + this.contactMobileNum);
+    console.log("this.state.message = " + this.state.message);
     var messageData = {
       contactId: 5,
       contactMobileNum: "+12602554797",
@@ -96,8 +96,8 @@ class MessageForm extends Component<any, MessageState> {
 
     fetch('http://localhost:3000/message/', {
       method: 'POST',
-      body: JSON.stringify({message:messageData}),
-      headers: new Headers (headersData)
+      body: JSON.stringify({ message: messageData }),
+      headers: new Headers(headersData)
       // headers: new Headers ({
       //   'Content-type': 'application/json',
       //   'authorization': token

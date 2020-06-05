@@ -6,9 +6,6 @@ import "./MessageList.css";
 type MessageListObj = {
   messages: Object[]
 };
-// interface nodeHelper {
-//   node: any
-// }
 
 class MessageList extends Component<MessageListObj> {
   static propTypes = {
@@ -28,7 +25,7 @@ class MessageList extends Component<MessageListObj> {
     return (
       <div className="MessageList" ref={(node) => (this.node = node)}>
         {this.props.messages.map((message, i) => (
-          <Message key={i} {...message}/>
+          <Message key={i} {...message} />
         ))}
       </div>
     );

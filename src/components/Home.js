@@ -1,0 +1,52 @@
+import React from "react";
+import MessageList from "./messages/MessageList";
+import MessageForm from "./messages/MessageForm";
+import "./Home.css";
+import Message from "./messages/Message";
+import "../.env";
+
+class Home extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      messages: [],
+    };
+  }
+
+  handleNewMessage = (text) => {
+    // Send an SMS using Twilio
+    // const accountSid = process.env.TWILIO_ACCOUNT_SID;
+    // const authToken = process.env.TWILIO_AUTH_TOKEN;
+
+    const accountSid = "REMOVED_SID";
+    const authToken = "b92a4a4576b28dcea35a287f4bd0a176";
+    const client = require("twilio")(accountSid, authToken);
+
+    client.messages.create({
+      body: text,
+      from: "REMOVED_FROM_NUMBER", // Twillio Number
+      to: "REMOVED_TO_NUMBER",
+    });
+
+    this.setState({
+      messages: [
+        ...this.state.messages,
+        { me: true, author: "kaelon", body: text },
+      ],
+    });
+  };
+  render() {
+    console.log(this.props.contact);
+    return (
+      <div className="chatBox-main">
+        <h1 className="home-h1">Home page</h1>
+        <div className="chatBox">
+          <MessageList messages={this.state.messages} />
+          <MessageForm onMessageSend={this.handleNewMessage} />
+        </div>
+      </div>
+    );
+  }
+}
+
+export default Home;

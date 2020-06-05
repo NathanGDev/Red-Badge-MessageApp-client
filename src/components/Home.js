@@ -19,8 +19,10 @@ class Home extends React.Component {
     // const authToken = process.env.TWILIO_AUTH_TOKEN;
 
     const accountSid = "ACc3b07c329cd2ac8ac317f9b4acc48794";
-    const authToken = "875a926342f6c803aa5a0d59b7d85274";
+    const authToken = "3b27cc891495722768902bad546a0608";
     const client = require("twilio")(accountSid, authToken);
+
+    console.log('&&&&&&& In Home.js &&&&&&&')
 
     client.messages.create({
       body: text,

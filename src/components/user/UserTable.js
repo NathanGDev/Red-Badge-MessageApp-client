@@ -24,54 +24,37 @@ const useStyles = makeStyles({
   },
 });
 
-
-const ContactTable = (props) => {
-  const { contactSet } = props;
+const UserTable = (props) => {
+  const { userSet } = props;
   const classes = useStyles();
 
+  const deleteUser = (user) => { 
+    fetch(`http://localhost:3000/user/${user.id}`, { 
+        method: 'DELETE',
+        headers: new Headers({
+        'Content-Type': 'application/json',
+        Authorization: props.token, 
+        }),
+    }).then(() => props.fetchUsers()) 
+};
 
-  const deleteContact = (contact) => {
-    fetch(`http://localhost:3000/contact/${contact.id}`, {
-      method: "DELETE",
-      headers: new Headers({
-        "Content-Type": "application/json",
-        Authorization: props.token,
-      }),
-    }).then(() => props.fetchContacts());
-  };
+const userMapper = () => {
+  console.log(JSON.stringify(props.users))
+    return props.users.map((user, index) => { 
+        return(
+          <TableRow key={user.id}>
+          <TableCell align="left">{user.firstName}</TableCell>
+          <TableCell align="left">{user.lastName}</TableCell>
+          <TableCell align="left">{user.mobileNum}</TableCell>
+          <TableCell align="left">{user.fbMsgrId}</TableCell>
+          <TableCell align="left">{user.email}</TableCell>
+          <TableCell align="left">{user.userType.userType}</TableCell>
 
-  const contactMapper = () => {
-    return props.contacts.map((contact, index) => {
-      return (
-        // <TableContainer>
-        // <Table className={classes.table}>
-          // <TableBody>
-            <TableRow key={contact.id}> {/*works w index*/}
-              {/* <TableCell>{contact.id}</TableCell> */}
-              <TableCell className={classes.tableCell} component="th" scope="row" align="left">{contact.firstName}</TableCell>
-              <TableCell align="left">{contact.lastName}</TableCell>
-              <TableCell align="left">{contact.mobileNum}</TableCell>
-              <TableCell align="left">{contact.fbMsgrId}</TableCell>
-
-              <TableCell align="left">
-              <Link to="/home">
-                <Tooltip title="Text Message">
-                <Button
-                  onClick={() => {
-                    contactSet(contact);
-                  }}
-                >
-                  <SmsIcon />
-                </Button>
-                </Tooltip>
-              </Link>
-              </TableCell>
-
-              <TableCell align="left">
+          <TableCell align="left">
               <Tooltip title="Edit">
               <Button
                 onClick={() => {
-                  props.editUpdateContact(contact);
+                  props.editUpdateUser(user);
                   props.updateOn();
                 }}
               >
@@ -84,7 +67,7 @@ const ContactTable = (props) => {
               <Tooltip title="Delete">
               <Button
                 onClick={() => {
-                  deleteContact(contact);
+                  deleteUser(user);
                 }}
               >
                 <DeleteIcon />
@@ -92,34 +75,31 @@ const ContactTable = (props) => {
               </Tooltip>
               </TableCell>
             </TableRow>
-          // </TableBody>
-        // </Table>
-        // </TableContainer>
-      );
-    });
-  };
+        )
+    })
+}
 
   return (
     <TableContainer>
       <Table>
        <TableHead>
           <TableRow>
-            {/* <TableCell>#</TableCell> */}
             <TableCell align="left">First Name</TableCell>
             <TableCell align="left">Last Name</TableCell>
             <TableCell align="left">Mobile</TableCell>
             <TableCell align="left">FB Msgr</TableCell>
-            <TableCell align="left">Text Msg</TableCell>
+            <TableCell align="left">Email</TableCell>
+            <TableCell align="left">User Type</TableCell>
             <TableCell align="left">Edit</TableCell>
             <TableCell align="left">Delete</TableCell>
-
           </TableRow>
         </TableHead>
         <TableBody>
-          {contactMapper()}
+          {userMapper()}
           </TableBody>
      </Table>
     </TableContainer>
   );
 };
-export default ContactTable;
+export default UserTable;
+

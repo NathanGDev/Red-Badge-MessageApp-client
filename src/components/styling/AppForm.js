@@ -5,36 +5,36 @@ import Box from '@material-ui/core/Box';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from './Paper';
 
-const styles = (theme: any) => ({
+const styles = (theme) => ({
   root: {
     display: 'flex',
     backgroundRepeat: 'no-repeat',
   },
   paper: {
-    padding: theme.spacing(4, 3),
+    padding: theme.spacing(2, 1),
     [theme.breakpoints.up('md')]: {
-      padding: theme.spacing(8, 6),
+      padding: theme.spacing(2, 6),
     },
   },
 });
 
-function TableForm(props: any) {
+function AppForm(props) {
   const { children, classes } = props;
 
   return (
     <div className={classes.root}>
-      <Container maxWidth="sm">
-        <Box mt={7} mb={12}>
+      <Container>
+        {/* <Box mt={7} mb={12}> */}
           <Paper className={classes.paper}>{children}</Paper>
-        </Box>
+        {/* </Box> */}
       </Container>
     </div>
   );
 }
 
-TableForm.propTypes = {
+AppForm.propTypes = {
   children: PropTypes.node.isRequired,
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(TableForm);
+export default withStyles(styles)(AppForm);

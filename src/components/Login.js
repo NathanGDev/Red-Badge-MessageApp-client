@@ -1,4 +1,4 @@
-// import withRoot from '././styling/withRoot';
+import withRoot from '././styling/withRoot';
 import React, { useState } from "react";
 import { Form, FormGroup, Label, Input, Button } from "reactstrap";
 import { makeStyles } from "@material-ui/core/styles";
@@ -66,9 +66,9 @@ const Login = (props) => {
     <React.Fragment>
       <AppForm>
         <React.Fragment>
-          <Typography variant="h3">Log In</Typography>
+          <Typography variant="h5" align="center">Log In</Typography>
         </React.Fragment>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} align="center">
           <TextField
             label="Email"
             defaultValue="email"
@@ -102,15 +102,16 @@ const Login = (props) => {
             type="submit"
             color="secondary"
             value="login"
-            fullWidth
+            // fullWidth
+            alignItems="center"
             onClick={handleSubmit}
           >
             Login
           </FormButton>
           {/* <div onClick={needAccount}>need an account?</div> */}
           <div>
-            <Link href="/signup" onClick={toggle}>
-              Need an account
+            <Link href="/signup" alignItems="center" onClick={toggle}>
+              Need to create an account?
             </Link>
             {/* <a href="/signup">Need to create an account?</a> */}
           </div>
@@ -119,4 +120,4 @@ const Login = (props) => {
     </React.Fragment>
   );
 };
-export default Login;
+export default withRoot(Login);

@@ -4,36 +4,35 @@ import { Container, Row, Col } from 'reactstrap';
 import UserTypeCreate from './UserTypeCreate';
 import UserTypeEdit from './UserTypeEdit';
 import UserTypeTable from './UserTypeTable';
-import NavBar from '../NavBar';
 // import APIURL from '../../helpers/environment';
 
 
-const UserTypeIndex = (props: any) => {
+const UserTypeIndex = (props) => {
     const [userTypes, setUserTypes] = useState([]);
     const [updateActive, setUpdateActive] = useState(false);
     const [userTypeToUpdate, setUserTypeToUpdate] = useState({});
 
-    console.log(props.token)
-
+    const { userTypeSet } = props;
 
     const fetchUserTypes = () => {
-        fetch(`http://localhost:3001/usertype/`, {
+        fetch(`http://localhost:3000/usertype/`, {
             method: 'GET',
             headers: new Headers({
                 'Content-Type': 'application/json',
-                'Authorization': props.token
+                Authorization: props.token.sessionToken
             })
-        }).then((res) => res.json())
+        })
+            .then((res) => res.json())
             .then((userTypeData) => {
                 setUserTypes(userTypeData)
-            })
-    }
+            });
+    };
 
     useEffect(() => {
         fetchUserTypes();
     }, [])
 
-    const editUpdateUserType = (userType: any) => {
+    const editUpdateUserType = (userType) => {
         setUserTypeToUpdate(userType);
     }
 
@@ -47,13 +46,26 @@ const UserTypeIndex = (props: any) => {
 
     return (
         <Container>
-            <NavBar />
-            <UserTypeCreate fetchUserTypes={fetchUserTypes} token={props.token}/>
-            <UserTypeTable userTypes={userTypes} editUpdateUserType={editUpdateUserType}
-                updateOn={updateOn} fetchUserTypes={fetchUserTypes} token={props.token} />
-            {updateActive ? <UserTypeEdit userTypeToUpdate={userTypeToUpdate}
-                updateOff={updateOff} token={props.token} fetchUserTypes={fetchUserTypes} /> : <></>}
-        </Container>
+      <UserTypeCreate fetchUserTypes={fetchUserTypes} token={props.token} />
+      <UserTypeTable
+        userTypeSet={userTypeSet}
+        userTypes={userTypes}
+        editUpdateUserType={editUpdateUserType}
+        updateOn={updateOn}
+        fetchUserTypes={fetchUserTypes}
+        token={props.token.sessionToken}
+      />
+      {updateActive ? (
+        <UserTypeEdit
+          userTypeToUpdate={userTypeToUpdate}
+          updateOff={updateOff}
+          token={props.token}
+          fetchUserTypes={fetchUserTypes}
+        />
+      ) : (
+        <></>
+      )}
+    </Container>
     );
 };
 

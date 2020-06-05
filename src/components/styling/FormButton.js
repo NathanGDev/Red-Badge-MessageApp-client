@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import defer from './defer';
 import Button from './Button';
 
-function FormButton(props: any) {
+function FormButton(props) {
   const { disabled, mounted, ...others } = props;
   return <Button disabled={!mounted || disabled} type="submit" variant="contained" {...others} />;
 }
